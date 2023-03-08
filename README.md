@@ -13,7 +13,7 @@ Sustav za upravljanje količinom namirnica u ugostiteljstvu
 ### Domena
 U ugostiteljstvu dolazi do problema organizacije narmirnica. Glavni kuhari često moraju voditi računa o količini namirnica na skladištu i ponekad im je teško procjeniti koliko namirnica troše i koju količinu namirnica trebaju naručiti. Zbog toga dolazi do bacanja hrane zbog prevelikih narudžba ili nedostatka namirnica za kuhanje jela. Zbog tih problema odlučili smo ugostiteljima olakšati proces nabave i upravljanja količinom namirnica.
 
-Projekt je iniciajalno započet na kolegiju "Razvoj Programskih Proizvoda".
+Projekt je inicijalno započet na kolegiju "Razvoj Programskih Proizvoda".
 
 ## Projektni tim
 
