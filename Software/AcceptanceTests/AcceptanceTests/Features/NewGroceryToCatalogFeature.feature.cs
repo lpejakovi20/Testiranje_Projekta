@@ -20,7 +20,7 @@ namespace AcceptanceTests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class AddingNewGroceryToCatalogFeatureFeature
+    public partial class NewGroceryToCatalogFeatureFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -29,7 +29,7 @@ namespace AcceptanceTests.Features
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "AddingNewGroceryToCatalogFeature.feature"
+#line 1 "NewGroceryToCatalogFeature.feature"
 #line hidden
         
         public virtual Microsoft.VisualStudio.TestTools.UnitTesting.TestContext TestContext
@@ -48,7 +48,7 @@ namespace AcceptanceTests.Features
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "AddingNewGroceryToCatalogFeature", "As a worker in the kitchen\r\nI want to be able to add new ingredients into grocery" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "NewGroceryToCatalogFeature", "As a worker in the kitchen\r\nI want to be able to add new ingredients into grocery" +
                     " catalog", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -64,9 +64,9 @@ namespace AcceptanceTests.Features
         public virtual void TestInitialize()
         {
             if (((testRunner.FeatureContext != null) 
-                        && (testRunner.FeatureContext.FeatureInfo.Title != "AddingNewGroceryToCatalogFeature")))
+                        && (testRunner.FeatureContext.FeatureInfo.Title != "NewGroceryToCatalogFeature")))
             {
-                global::AcceptanceTests.Features.AddingNewGroceryToCatalogFeatureFeature.FeatureSetup(null);
+                global::AcceptanceTests.Features.NewGroceryToCatalogFeatureFeature.FeatureSetup(null);
             }
         }
         
@@ -94,7 +94,7 @@ namespace AcceptanceTests.Features
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Empty ingredient")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddingNewGroceryToCatalogFeature")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NewGroceryToCatalogFeature")]
         public virtual void EmptyIngredient()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -135,7 +135,7 @@ this.ScenarioInitialize(scenarioInfo);
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("User tries to save a food item with missing information")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddingNewGroceryToCatalogFeature")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NewGroceryToCatalogFeature")]
         public virtual void UserTriesToSaveAFoodItemWithMissingInformation()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -180,7 +180,7 @@ this.ScenarioInitialize(scenarioInfo);
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("User tries to save a food item without a QR code")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddingNewGroceryToCatalogFeature")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NewGroceryToCatalogFeature")]
         public virtual void UserTriesToSaveAFoodItemWithoutAQRCode()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -224,7 +224,7 @@ this.ScenarioInitialize(scenarioInfo);
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("User tries to save a food item with only the QR code")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddingNewGroceryToCatalogFeature")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NewGroceryToCatalogFeature")]
         public virtual void UserTriesToSaveAFoodItemWithOnlyTheQRCode()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -268,7 +268,7 @@ this.ScenarioInitialize(scenarioInfo);
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("User correctly inputs a new grocery")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddingNewGroceryToCatalogFeature")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NewGroceryToCatalogFeature")]
         public virtual void UserCorrectlyInputsANewGrocery()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -315,7 +315,7 @@ this.ScenarioInitialize(scenarioInfo);
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("User quits inputing a new grocery")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddingNewGroceryToCatalogFeature")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NewGroceryToCatalogFeature")]
         public virtual void UserQuitsInputingANewGrocery()
         {
             string[] tagsOfScenario = ((string[])(null));

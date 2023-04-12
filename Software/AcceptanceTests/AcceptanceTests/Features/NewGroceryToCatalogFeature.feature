@@ -1,4 +1,4 @@
-﻿Feature: AddingNewGroceryToCatalogFeature
+﻿Feature: NewGroceryToCatalogFeature
 
 
 As a worker in the kitchen
