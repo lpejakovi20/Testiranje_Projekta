@@ -44,6 +44,8 @@ namespace DataAccessLayer.Repositories
             namirnica.namirnica_u_katalogu = namirnicaKatalog;
             namirnica.iskoristeno += entity.iskoristeno;
 
+
+
             if (saveChanges)
             {
                 return SaveChanges();

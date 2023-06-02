@@ -120,7 +120,7 @@ namespace DataAccessLayer.Repositories
         ///<author>Matej Ritoša</author>
         public IQueryable<StavkaNarudzbenice> GetDostupneKolicineNamirnica()
         {
-            var today = DateTime.Today;
+            
             var result = from p in Context.namirnica_u_katalogu
                          join n in Context.namirnica on p.id equals n.namirnica_u_katalogu_id into pn
                          from n in pn.Where(x => x.rok >= DateTime.Today)

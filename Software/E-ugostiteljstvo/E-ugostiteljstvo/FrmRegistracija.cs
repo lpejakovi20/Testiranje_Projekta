@@ -62,7 +62,7 @@ namespace E_ugostiteljstvo
             snimkaLica.Retrieve(frame, 0);
             currentFrame = frame.ToImage<Bgr, Byte>().Resize(pcbSlika.Width, pcbSlika.Height, Inter.Cubic);
             detektiranoLice = true;
-            if (detektiranoLice)
+            if (true)
              {
                  Mat grayImage = new Mat();
                  CvInvoke.CvtColor(currentFrame, grayImage, ColorConversion.Bgr2Gray);
