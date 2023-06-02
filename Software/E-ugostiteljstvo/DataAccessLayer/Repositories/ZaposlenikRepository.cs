@@ -45,11 +45,14 @@ namespace DataAccessLayer.Repositories
         {
             var zaposlenik = Entities.SingleOrDefault(c => c.id == entity.id);
 
-            zaposlenik.ime = entity.ime;
-            zaposlenik.prezime = entity.prezime;
-            zaposlenik.lozinka = entity.lozinka;
-            zaposlenik.email = entity.email;
+           
 
+            if(zaposlenik != null) {
+                zaposlenik.ime = entity.ime;
+                zaposlenik.prezime = entity.prezime;
+                zaposlenik.lozinka = entity.lozinka;
+                zaposlenik.email = entity.email;
+            }
 
             if (saveChanges)
             {

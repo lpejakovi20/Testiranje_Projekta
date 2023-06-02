@@ -18,9 +18,11 @@ namespace DataAccessLayer.Repositories
         {
             var uloga = Entities.SingleOrDefault(c => c.id == entity.id);
 
-            uloga.naziv = entity.naziv;
-            uloga.opis = entity.opis;
-
+            
+            if(uloga != null) {
+                uloga.naziv = entity.naziv;
+                uloga.opis = entity.opis;
+            }
             if (saveChanges)
             {
                 return SaveChanges();
