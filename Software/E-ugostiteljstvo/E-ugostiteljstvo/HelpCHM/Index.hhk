@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Registracija">
+		<param name="Name" value="Registracija">
+		<param name="Local" value="..\CHM\Registracija.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="PregledStavkiNarudzbenice">
+		<param name="Name" value="Stavke narudzbenice">
+		<param name="Local" value="..\CHM\PregledStavkiNarudzbenice.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="KatalogNamirnica">
+		<param name="Name" value="Katalog namirnica">
+		<param name="Local" value="..\CHM\KatalogNamirnica.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="StavkeIzdatnice">
+		<param name="Name" value="Stavke izdatnice">
+		<param name="Local" value="..\CHM\StavkeIzdatnice.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Statistika">
+		<param name="Name" value="Statistika">
+		<param name="Local" value="..\CHM\Statistika.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="PregledNarudzbenica">
+		<param name="Name" value="Pregled narudzbenica">
+		<param name="Local" value="..\CHM\PregledNarudzbenica.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="DodajNamirnicuUKatalog">
+		<param name="Name" value="Dodaj novu namirnicu u katalog">
+		<param name="Local" value="..\CHM\DodavanjeUKatalog.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Narudzbenica">
+		<param name="Name" value="Narudzbenica">
+		<param name="Local" value="..\CHM\DodavanjeNamirnicaUNarudzbenicu.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="IzbornikRacunovodstva">
+		<param name="Name" value="Izbornik racunovodstva">
+		<param name="Local" value="..\CHM\IzbornikRacunovodstvo.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="DodajStavkuIzdatnice">
+		<param name="Name" value="Dodaj stavku izdatnice">
+		<param name="Local" value="..\CHM\DodavanjeStavkeUIzdatnicu.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Prijava">
+		<param name="Name" value="Prijava">
+		<param name="Local" value="..\CHM\Prijava.htm">
+		</OBJECT>
+</UL>
+</BODY></HTML>
