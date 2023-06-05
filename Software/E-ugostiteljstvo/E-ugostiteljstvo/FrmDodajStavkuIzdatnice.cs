@@ -34,6 +34,8 @@ namespace E_ugostiteljstvo
             txtNaziv.Enabled = false;
             txtVrsta.Enabled = false;
 
+            cmbRokTrajanja.DropDownStyle = ComboBoxStyle.DropDownList;
+
             filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             foreach(FilterInfo filterInfo in filterInfoCollection)
             {
