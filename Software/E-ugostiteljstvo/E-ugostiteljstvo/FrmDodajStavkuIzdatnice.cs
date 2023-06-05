@@ -64,6 +64,15 @@ namespace E_ugostiteljstvo
             
         }
 
+        private void UgasiKameru()
+        {
+            timer1.Stop();
+            if (captureDevice.IsRunning)
+            {
+                captureDevice.Stop();
+            }
+        }
+
         namirnica_u_katalogu namirnicaKatalog;
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -74,22 +83,30 @@ namespace E_ugostiteljstvo
                 if(result != null)
                 {
                     var servis = new KatalogNamirnicaServices();
-                    namirnicaKatalog = servis.GetKatalogNamirnicaById(Int32.Parse(result.ToString()));
-
-                    txtId.Text = result.ToString();
-                    txtNaziv.Text = namirnicaKatalog.naziv;
-                    txtVrsta.Text = namirnicaKatalog.vrsta;
-
-                    var servisNamirnica = new NamirnicaServices();
-                    var namirnice = servisNamirnica.GetAll(Int32.Parse(result.ToString()));
-
-                    cmbRokTrajanja.DataSource = namirnice;
-                    cmbRokTrajanja.SelectedIndex = 0;
-
-                    timer1.Stop();
-                    if (captureDevice.IsRunning)
+                    
+                    var isNumeric = int.TryParse(result.ToString(), out _);
+                    if (isNumeric)
                     {
-                        captureDevice.Stop();
+                        namirnicaKatalog = servis.GetKatalogNamirnicaById(Int32.Parse(result.ToString()));
+                        
+                        if(namirnicaKatalog != null)
+                        {
+                            txtId.Text = result.ToString();
+                            txtNaziv.Text = namirnicaKatalog.naziv;
+                            txtVrsta.Text = namirnicaKatalog.vrsta;
+
+                            var servisNamirnica = new NamirnicaServices();
+                            var namirnice = servisNamirnica.GetAll(Int32.Parse(result.ToString()));
+
+                            cmbRokTrajanja.DataSource = namirnice;
+                            cmbRokTrajanja.SelectedIndex = 0;
+                        }
+                    }
+                    UgasiKameru();
+                    if (!isNumeric || namirnicaKatalog == null)
+                    {
+                        pictureBox1.Image = null;
+                        MessageBox.Show("Skenirani kod ne pripada niti jednoj od postojećih namirnica!");
                     }
                 }
             }
