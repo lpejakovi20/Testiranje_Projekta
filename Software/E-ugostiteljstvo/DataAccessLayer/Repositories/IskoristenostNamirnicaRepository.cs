@@ -41,8 +41,11 @@ namespace DataAccessLayer.Repositories
             var godina = entity.datum.Year;
 
             var namirnica = Entities.SingleOrDefault(p => p.namirnica_u_katalogu_id == entity.namirnica_u_katalogu_id && p.datum.Month == mjesec && p.datum.Year == godina);
-            namirnica.namirnica_u_katalogu = namirnicaKatalog;
-            namirnica.iskoristeno += entity.iskoristeno;
+            if(namirnica != null)
+            {
+                namirnica.namirnica_u_katalogu = namirnicaKatalog;
+                namirnica.iskoristeno += entity.iskoristeno;
+            }
 
 
 

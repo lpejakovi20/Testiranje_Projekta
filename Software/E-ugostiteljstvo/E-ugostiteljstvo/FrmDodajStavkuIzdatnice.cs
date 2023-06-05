@@ -57,12 +57,9 @@ namespace E_ugostiteljstvo
 
         private void FrmDodajStavkuIzdatnice_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(captureDevice != null)
+            if(captureDevice != null && captureDevice.IsRunning)
             {
-                if (captureDevice.IsRunning)
-                {
-                    captureDevice.Stop();
-                }
+                captureDevice.Stop();
             }
             
         }

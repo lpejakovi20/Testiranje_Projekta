@@ -19,8 +19,11 @@ namespace DataAccessLayer.Repositories
             var namirnicaKatalog = Context.namirnica_u_katalogu.SingleOrDefault(c => c.id == entity.namirnica_u_katalogu_id);
 
             var namirnica = Entities.SingleOrDefault(p => p.namirnica_u_katalogu_id == entity.namirnica_u_katalogu_id && p.rok == entity.rok);
-            namirnica.namirnica_u_katalogu = namirnicaKatalog;
-            namirnica.kolicina -= entity.kolicina;
+            if(namirnica != null)
+            {
+                namirnica.namirnica_u_katalogu = namirnicaKatalog;
+                namirnica.kolicina -= entity.kolicina;
+            }
 
             if (saveChanges)
             {
@@ -57,11 +60,16 @@ namespace DataAccessLayer.Repositories
             var namirnicaKatalog = Context.namirnica_u_katalogu.SingleOrDefault(c => c.id == entity.namirnica_u_katalogu_id);
             var _namirnica = new namirnica();
 
-            var noviRok = entity.rok.AddDays(namirnicaKatalog.rok_uporabe);
+            var noviRok = new DateTime();
+            if(namirnicaKatalog != null)
+            {
+                noviRok = entity.rok.AddDays(namirnicaKatalog.rok_uporabe);
+                _namirnica.namirnica_u_katalogu = namirnicaKatalog;
+            }
 
             _namirnica.kolicina = entity.kolicina;
             _namirnica.rok = noviRok;
-            _namirnica.namirnica_u_katalogu = namirnicaKatalog;
+            
 
 
             Entities.Add(_namirnica);
@@ -98,8 +106,6 @@ namespace DataAccessLayer.Repositories
         ///<author>Lovro Pejaković</author>
         public IQueryable<dynamic> GetNamirniceIstecenogRoka()
         {
-            var today = DateTime.Today;
-
             var result = from p in Context.namirnica_u_katalogu
                          join n in Context.namirnica on p.id equals n.namirnica_u_katalogu_id into pn
                          from n in pn.Where(x => x.rok < DateTime.Today)

@@ -11,7 +11,6 @@ namespace EntitiesLayer.Entities
     {
         public override string ToString()
         {
-            //return rok.ToString();
             return rok.ToShortDateString();
         }
     }
