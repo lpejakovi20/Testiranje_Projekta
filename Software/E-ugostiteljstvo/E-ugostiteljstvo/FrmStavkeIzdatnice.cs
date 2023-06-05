@@ -45,9 +45,16 @@ namespace E_ugostiteljstvo
 
         private void btnUkloni_Click(object sender, EventArgs e)
         {
-            var odabranaStavka = dgvStavkeIzdatnice.CurrentRow.DataBoundItem as StavkaIzdatnice;
-            StavkaIzdatniceRepository.lista.RemoveAll(s => s.Temp_id == odabranaStavka.Temp_id);
-            OsvjeziStavkeIzdatnice();
+            if(dgvStavkeIzdatnice.CurrentRow != null)
+            {
+                var odabranaStavka = dgvStavkeIzdatnice.CurrentRow.DataBoundItem as StavkaIzdatnice;
+                StavkaIzdatniceRepository.lista.RemoveAll(s => s.Temp_id == odabranaStavka.Temp_id);
+                OsvjeziStavkeIzdatnice();
+            }
+            else
+            {
+                MessageBox.Show("Nije moguće ukloniti stavku ukoliko nije odabrana!");
+            }
         }
 
         private void btnIspis_Click(object sender, EventArgs e)
