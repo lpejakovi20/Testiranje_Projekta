@@ -13,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitiesLayer", "EntitiesLa
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "E-ugostiteljstvoSetup", "E-ugostiteljstvoSetup\E-ugostiteljstvoSetup.vdproj", "{BC010899-0461-451C-8E76-E08A4A9F100E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer_UnitTests", "BusinessLogicLayer_UnitTests\BusinessLogicLayer_UnitTests.csproj", "{A8F058DB-1A9F-4AA2-8BD2-53D78930B8BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogicLayer_UnitTests", "BusinessLogicLayer_UnitTests\BusinessLogicLayer_UnitTests.csproj", "{A8F058DB-1A9F-4AA2-8BD2-53D78930B8BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer_IntegrationTests", "BusinessLogicLayer_IntegrationTests\BusinessLogicLayer_IntegrationTests.csproj", "{67D88D1E-2E4D-46EF-A401-33F6090BF2EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{A8F058DB-1A9F-4AA2-8BD2-53D78930B8BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8F058DB-1A9F-4AA2-8BD2-53D78930B8BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8F058DB-1A9F-4AA2-8BD2-53D78930B8BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67D88D1E-2E4D-46EF-A401-33F6090BF2EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67D88D1E-2E4D-46EF-A401-33F6090BF2EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67D88D1E-2E4D-46EF-A401-33F6090BF2EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67D88D1E-2E4D-46EF-A401-33F6090BF2EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
