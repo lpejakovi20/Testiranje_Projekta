@@ -20,7 +20,7 @@ namespace BusinessLogicLayer.Services
         public bool AddNarudzbenica(narudzbenica _narudzbenica)
         {
             bool isSuccessful = false;
-            using (var pero = new NarudzbenicaRepository())
+            using (var r = new NarudzbenicaRepository())
             {
                 int affectedRows = repo.Add(_narudzbenica);
                 isSuccessful = affectedRows > 0;

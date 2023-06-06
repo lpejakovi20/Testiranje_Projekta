@@ -85,7 +85,7 @@ namespace E_ugostiteljstvo
                 Result result = barcodeReader.Decode((Bitmap)pictureBox1.Image);
                 if(result != null)
                 {
-                    var servis = new KatalogNamirnicaServices();
+                    var servis = new KatalogNamirnicaServices(new KatalogNamirnicaRepository());
                     
                     var isNumeric = int.TryParse(result.ToString(), out _);
                     if (isNumeric)

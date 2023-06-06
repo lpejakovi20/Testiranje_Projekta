@@ -1,4 +1,5 @@
-﻿using EntitiesLayer.Entities;
+﻿using DataAccessLayer.Interfaces;
+using EntitiesLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace DataAccessLayer.Repositories
 {
     ///<author>Nikola Parag</author>
-    public class KatalogNamirnicaRepository : Repository<namirnica_u_katalogu>
+    public class KatalogNamirnicaRepository : Repository<namirnica_u_katalogu>, IKatalogNamirnicaRepository
     {
         public KatalogNamirnicaRepository() : base(new DBModel())
         {

@@ -15,6 +15,7 @@ using BusinessLogicLayer.Services;
 using System.Drawing.Imaging;
 using System.IO;
 using EntitiesLayer;
+using DataAccessLayer.Repositories;
 
 namespace E_ugostiteljstvo
 {
@@ -106,7 +107,7 @@ namespace E_ugostiteljstvo
 
                 };
 
-                var services = new KatalogNamirnicaServices();
+                var services = new KatalogNamirnicaServices(new KatalogNamirnicaRepository());
 
                 if (services.AddNamirnica(novaNamirnica))
                 {

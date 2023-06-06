@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Repositories;
+﻿using DataAccessLayer.Interfaces;
+using DataAccessLayer.Repositories;
 using EntitiesLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,15 @@ namespace BusinessLogicLayer.Services
     public class KatalogNamirnicaServices
     {
         ///<author>Nikola Parag</author>
+        private IKatalogNamirnicaRepository repo;
+        public KatalogNamirnicaServices(IKatalogNamirnicaRepository repository)
+        {
+            repo = repository;
+        }
         public bool AddNamirnica(namirnica_u_katalogu novanamirnica)
         {
             bool isSuccessful = false;
-            using (var repo = new KatalogNamirnicaRepository())
+            using (var r = new KatalogNamirnicaRepository())
             {
                 int affectedRows = repo.Add(novanamirnica);
                 isSuccessful = affectedRows > 0;

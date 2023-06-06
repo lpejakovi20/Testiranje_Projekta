@@ -19,7 +19,7 @@ namespace E_ugostiteljstvo
     {
         private narudzbenica SelektiranaNarudzbenica;
 
-        KatalogNamirnicaServices servisKatalog = new KatalogNamirnicaServices();
+        KatalogNamirnicaServices servisKatalog = new KatalogNamirnicaServices(new KatalogNamirnicaRepository());
 
         NarudzbenicaServices servisNarudzbenice = new NarudzbenicaServices(new NarudzbenicaRepository());
         public FrmStavkeNarudzbenice(narudzbenica _narudzbenica)
@@ -64,7 +64,7 @@ namespace E_ugostiteljstvo
                 };
 
                 var servisNamirnica = new NamirnicaServices(new NamirnicaRepository());
-                var servisNamirnicaKatalog = new KatalogNamirnicaServices();
+                var servisNamirnicaKatalog = new KatalogNamirnicaServices(new KatalogNamirnicaRepository());
 
                 var namirnice = servisNamirnica.GetAll(id);
                 var namirnicaKatalog = servisNamirnicaKatalog.GetKatalogNamirnicaById(id);

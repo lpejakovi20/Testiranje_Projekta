@@ -17,7 +17,7 @@ namespace E_ugostiteljstvo
     ///<author>Matej Ritoša</author>
     public partial class FrmKreirajNarudžbenicu : Form
     {
-        KatalogNamirnicaServices servisNamirnica = new KatalogNamirnicaServices();
+        KatalogNamirnicaServices servisNamirnica = new KatalogNamirnicaServices(new KatalogNamirnicaRepository());
         NarudzbenicaServices servisNarudzbenica = new NarudzbenicaServices(new NarudzbenicaRepository());
         StavkeNarudzbeniceServices servisStavke = new StavkeNarudzbeniceServices();
         NamirnicaServices namirnica = new NamirnicaServices(new NamirnicaRepository());
