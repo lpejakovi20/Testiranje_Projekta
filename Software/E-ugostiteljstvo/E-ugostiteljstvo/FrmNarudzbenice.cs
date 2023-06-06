@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogicLayer.Services;
+using DataAccessLayer.Repositories;
 using EntitiesLayer.Entities;
 
 namespace E_ugostiteljstvo
@@ -21,7 +22,7 @@ namespace E_ugostiteljstvo
             InitializeComponent();
         }
 
-        NarudzbenicaServices servisNarudzbenice = new NarudzbenicaServices();
+        NarudzbenicaServices servisNarudzbenice = new NarudzbenicaServices(new NarudzbenicaRepository());
 
         private void FrmNarudzbenice_Load(object sender, EventArgs e)
         {

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogicLayer.Services;
+using DataAccessLayer.Repositories;
 using EntitiesLayer.Entities;
 
 namespace E_ugostiteljstvo
@@ -16,7 +17,7 @@ namespace E_ugostiteljstvo
     public partial class FrmIzvjestajPrimka : Form
     {
         private narudzbenica SelektiranaNarudzbenica;
-        NarudzbenicaServices servisNarudzbenice = new NarudzbenicaServices();
+        NarudzbenicaServices servisNarudzbenice = new NarudzbenicaServices(new NarudzbenicaRepository());
         KatalogNamirnicaServices servisKatalog = new KatalogNamirnicaServices();
         ZaposlenikServices servisZaposlenik = new ZaposlenikServices();
 

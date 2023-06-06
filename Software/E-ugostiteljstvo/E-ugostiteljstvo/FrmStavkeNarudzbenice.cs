@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogicLayer.Services;
+using DataAccessLayer.Repositories;
 using EntitiesLayer;
 using EntitiesLayer.Entities;
 
@@ -20,7 +21,7 @@ namespace E_ugostiteljstvo
 
         KatalogNamirnicaServices servisKatalog = new KatalogNamirnicaServices();
 
-        NarudzbenicaServices servisNarudzbenice = new NarudzbenicaServices();
+        NarudzbenicaServices servisNarudzbenice = new NarudzbenicaServices(new NarudzbenicaRepository());
         public FrmStavkeNarudzbenice(narudzbenica _narudzbenica)
         {
             InitializeComponent();

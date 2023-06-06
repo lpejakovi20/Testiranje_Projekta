@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogicLayer.Services;
+using DataAccessLayer.Repositories;
 using EntitiesLayer;
 using EntitiesLayer.Entities;
 
@@ -17,7 +18,7 @@ namespace E_ugostiteljstvo
     public partial class FrmKreirajNarudžbenicu : Form
     {
         KatalogNamirnicaServices servisNamirnica = new KatalogNamirnicaServices();
-        NarudzbenicaServices servisNarudzbenica = new NarudzbenicaServices();
+        NarudzbenicaServices servisNarudzbenica = new NarudzbenicaServices(new NarudzbenicaRepository());
         StavkeNarudzbeniceServices servisStavke = new StavkeNarudzbeniceServices();
         NamirnicaServices namirnica = new NamirnicaServices();
 

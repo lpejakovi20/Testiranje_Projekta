@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccessLayer.Interfaces;
 using DataAccessLayer.Repositories;
 using EntitiesLayer.Entities;
 
@@ -11,10 +12,15 @@ namespace BusinessLogicLayer.Services
     ///<author>Matej Ritoša</author>
     public class NarudzbenicaServices
     {
+        private INarudzbenicaRepository repo;
+        public NarudzbenicaServices(INarudzbenicaRepository repository)
+        {
+            repo = repository;
+        }
         public bool AddNarudzbenica(narudzbenica _narudzbenica)
         {
             bool isSuccessful = false;
-            using (var repo = new NarudzbenicaRepository())
+            using (var pero = new NarudzbenicaRepository())
             {
                 int affectedRows = repo.Add(_narudzbenica);
                 isSuccessful = affectedRows > 0;
