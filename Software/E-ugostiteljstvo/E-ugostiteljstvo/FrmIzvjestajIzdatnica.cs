@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataAccessLayer.Repositories;
 
 namespace E_ugostiteljstvo
 {
@@ -25,7 +26,7 @@ namespace E_ugostiteljstvo
         {
             stavkaIzdatniceBindingSource.DataSource = StavkaIzdatniceRepository.lista.ToList();
 
-            var servisZaposlenik = new ZaposlenikServices();
+            var servisZaposlenik = new ZaposlenikServices(new ZaposlenikRepository());
             var logiraniZaposlenik = servisZaposlenik.GetZaposlenikById(LogiraniZaposlenik.Id);
 
             zaposlenikBindingSource.DataSource = logiraniZaposlenik;

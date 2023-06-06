@@ -13,7 +13,7 @@ using Xunit;
 
 namespace BusinessLogicLayer_UnitTests
 {
-    public class StavkeNarudzbeniceServices_Tests
+    public class NarudzbenicaServices_Tests
     {
         [Fact]
         public static void AddNarudzbenica_GivenNarudzbenicaIsNull_NarudzbenicaIsNotCreated()
@@ -50,6 +50,34 @@ namespace BusinessLogicLayer_UnitTests
             var uspjeh = narudzbenicaServices.AddNarudzbenica(narudzbenica);
             // Assert
             Assert.True(uspjeh);
+        }
+
+        [Fact]
+        public void GetNarudzbeniceById_GivenNarudzbenicaExists_ReturnsNarudzbenica() {
+            //Arrange
+            NarudzbenicaServices servis = new NarudzbenicaServices(new FakeNarudzbenicaRepository());
+            //Act
+            var narudzbenica = servis.GetNarudzbenicaById(125);
+            //Assert
+            Assert.IsType<narudzbenica>(narudzbenica);
+        }
+        [Fact]
+        public void GetNarudzbeniceById_GivenNarudzbenicaIsNotValid_ReturnsNull() {
+            //Arrange
+            NarudzbenicaServices servis = new NarudzbenicaServices(new FakeNarudzbenicaRepository());
+            //Act
+            var narudzbenica = servis.GetNarudzbenicaById(0);
+            //Assert
+            Assert.Null(narudzbenica);
+        }
+        [Fact]
+        public void GetNarudzbeniceById_GivenNarudzbenicaDoesntExist_ReturnsNull() {
+            //Arrange
+            NarudzbenicaServices servis = new NarudzbenicaServices(new FakeNarudzbenicaRepository());
+            //Act
+            var narudzbenica = servis.GetNarudzbenicaById(12);
+            //Assert
+            Assert.Null(narudzbenica);
         }
     }
 }

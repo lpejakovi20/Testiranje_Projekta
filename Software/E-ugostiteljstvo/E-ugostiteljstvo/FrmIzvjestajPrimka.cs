@@ -19,7 +19,7 @@ namespace E_ugostiteljstvo
         private narudzbenica SelektiranaNarudzbenica;
         NarudzbenicaServices servisNarudzbenice = new NarudzbenicaServices(new NarudzbenicaRepository());
         KatalogNamirnicaServices servisKatalog = new KatalogNamirnicaServices();
-        ZaposlenikServices servisZaposlenik = new ZaposlenikServices();
+        ZaposlenikServices servisZaposlenik = new ZaposlenikServices(new ZaposlenikRepository());
 
         public FrmIzvjestajPrimka(narudzbenica _narudzbenica)
         {

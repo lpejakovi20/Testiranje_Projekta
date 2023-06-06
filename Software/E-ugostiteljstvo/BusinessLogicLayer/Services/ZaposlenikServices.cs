@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccessLayer.Interfaces;
 using DataAccessLayer.Repositories;
 using EntitiesLayer.Entities;
 
@@ -10,11 +11,17 @@ namespace BusinessLogicLayer.Services
 {
     public class ZaposlenikServices
     {
+        private IZaposlenikRepository repo;
+
+        public ZaposlenikServices(IZaposlenikRepository repository) {
+            repo = repository;
+        }
+
         ///<author>Matej Ritoša</author>
         public bool AddZaposlenik(zaposlenik _zaposlenik)
         {
             bool isSuccessful = false;
-            using (var repo = new ZaposlenikRepository())
+            using (var r = new ZaposlenikRepository())
             {
                 int affectedRows = repo.Add(_zaposlenik);
                 isSuccessful = affectedRows > 0;
@@ -32,7 +39,7 @@ namespace BusinessLogicLayer.Services
         ///<author>Lovro Pejaković</author>
         public object GetZaposlenikById(int id)
         {
-            using (var repo = new ZaposlenikRepository())
+            using (var r = new ZaposlenikRepository())
             {
                 return repo.GetZaposlenikById(id);
             }
@@ -40,7 +47,7 @@ namespace BusinessLogicLayer.Services
         ///<author>Matej Ritoša</author>
         public zaposlenik GetZaposlenikByEmail(string phrase)
         {
-            using (var repo = new ZaposlenikRepository())
+            using (var r = new ZaposlenikRepository())
             {
                 return repo.GetZaposlenikByEmail(phrase);
             }
@@ -48,9 +55,9 @@ namespace BusinessLogicLayer.Services
         ///<author>Matej Ritoša</author>
         public zaposlenik GetZaposlenikNarudzbenice(int zaposlenikId)
         {
-            using (var repo = new ZaposlenikRepository())
+            using (var r = new ZaposlenikRepository())
             {
-                return repo.GetZaposlenikZaNarzdzbenicu(zaposlenikId);
+                return repo.GetZaposlenikZaNarudzbenicu(zaposlenikId);
             }
         }
     }

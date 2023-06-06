@@ -14,6 +14,7 @@ using Emgu.CV.CvEnum;
 using BusinessLogicLayer.Services;
 using EntitiesLayer.Entities;
 using System.IO;
+using DataAccessLayer.Repositories;
 
 namespace E_ugostiteljstvo
 {
@@ -117,7 +118,7 @@ namespace E_ugostiteljstvo
 
             if (validacijaMail(txtEmail.Text) && txtLozinka.Text.Length >= 6)
             {
-                var zaposlenikServices = new ZaposlenikServices();
+                var zaposlenikServices = new ZaposlenikServices(new ZaposlenikRepository());
                 zaposlenikServices.AddZaposlenik(_zaposlenik);
                 Close();
             }

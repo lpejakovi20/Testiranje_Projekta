@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccessLayer.Interfaces;
 using EntitiesLayer.Entities;
 
 namespace DataAccessLayer.Repositories
 {
     ///<author>Matej Ritoša</author>
-    public class ZaposlenikRepository : Repository<zaposlenik>
-    {
+    public class ZaposlenikRepository : Repository<zaposlenik> , IZaposlenikRepository {
         public ZaposlenikRepository() : base(new DBModel())
         {
         }
@@ -32,7 +32,7 @@ namespace DataAccessLayer.Repositories
             return query;
         }
 
-        public zaposlenik GetZaposlenikZaNarzdzbenicu(int zaposlenikId)
+        public zaposlenik GetZaposlenikZaNarudzbenicu(int zaposlenikId)
         {
             var query = (from p in Entities
                          where p.id == zaposlenikId
