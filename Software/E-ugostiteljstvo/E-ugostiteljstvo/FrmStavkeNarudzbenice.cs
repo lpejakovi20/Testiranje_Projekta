@@ -63,7 +63,7 @@ namespace E_ugostiteljstvo
                     rok = trenutniDatum
                 };
 
-                var servisNamirnica = new NamirnicaServices();
+                var servisNamirnica = new NamirnicaServices(new NamirnicaRepository());
                 var servisNamirnicaKatalog = new KatalogNamirnicaServices();
 
                 var namirnice = servisNamirnica.GetAll(id);

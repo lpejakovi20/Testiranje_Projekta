@@ -11,6 +11,7 @@ using AForge.Video;
 using AForge.Video.DirectShow;
 using BusinessLogicLayer.Services;
 using DataAccessLayer;
+using DataAccessLayer.Repositories;
 using EntitiesLayer.Entities;
 using ZXing;
 
@@ -97,7 +98,7 @@ namespace E_ugostiteljstvo
                             txtNaziv.Text = namirnicaKatalog.naziv;
                             txtVrsta.Text = namirnicaKatalog.vrsta;
 
-                            var servisNamirnica = new NamirnicaServices();
+                            var servisNamirnica = new NamirnicaServices(new NamirnicaRepository());
                             var namirnice = servisNamirnica.GetAll(Int32.Parse(result.ToString()));
 
                             cmbRokTrajanja.DataSource = namirnice;

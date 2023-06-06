@@ -1,4 +1,5 @@
-﻿using EntitiesLayer;
+﻿using DataAccessLayer.Interfaces;
+using EntitiesLayer;
 using EntitiesLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
-    public class NamirnicaRepository : Repository<namirnica>
+    public class NamirnicaRepository : Repository<namirnica>, INamirnicaRepository
     {
         public NamirnicaRepository() : base(new DBModel())
         {

@@ -73,7 +73,7 @@ namespace E_ugostiteljstvo
                         namirnica_u_katalogu_id = namirnica.Id
                     };
 
-                    var servis = new NamirnicaServices();
+                    var servis = new NamirnicaServices(new NamirnicaRepository());
                     servis.UpdateNamirnica(novaNamirnica);
 
                     var servisIskoristenostNamirnica = new IskoristenostNamirnicaServices(new IskoristenostNamirnicaRepository());

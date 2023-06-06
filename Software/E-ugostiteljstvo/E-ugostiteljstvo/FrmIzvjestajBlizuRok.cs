@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.Services;
+using DataAccessLayer.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ namespace E_ugostiteljstvo
     ///<author>Nikola Parag</author>
     public partial class FrmIzvjestajBlizuRok : Form
     {
-        NamirnicaServices services = new NamirnicaServices();
+        NamirnicaServices services = new NamirnicaServices(new NamirnicaRepository());
         public FrmIzvjestajBlizuRok()
         {
             InitializeComponent();

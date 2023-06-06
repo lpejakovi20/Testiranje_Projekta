@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="DBModel.cs" />
     <Compile Include="Interfaces\IIskoristenostNamirnicaRepository.cs" />
+    <Compile Include="Interfaces\INamirnicaRepository.cs" />
     <Compile Include="Interfaces\INarudzbenicaRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IskoristenostNamirnicaRepository.cs" />

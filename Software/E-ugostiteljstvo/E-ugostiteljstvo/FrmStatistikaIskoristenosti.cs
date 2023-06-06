@@ -26,7 +26,7 @@ namespace E_ugostiteljstvo
         {
             txtSveukupnaVrijednost.Enabled = false;
 
-            var servis = new NamirnicaServices();
+            var servis = new NamirnicaServices(new NamirnicaRepository());
             var listaNamirnica = servis.GetNamirniceIstecenogRoka();
 
             dgvNamirniceIstekaoRok.DataSource = listaNamirnica;

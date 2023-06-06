@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.Services;
+using DataAccessLayer.Repositories;
 using EntitiesLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace E_ugostiteljstvo
     public partial class FrmKatalogNamirnica : Form
     {
         private KatalogNamirnicaServices services = new KatalogNamirnicaServices();
-        private NamirnicaServices servicesNamirnica = new NamirnicaServices();  
+        private NamirnicaServices servicesNamirnica = new NamirnicaServices(new NamirnicaRepository());  
         public FrmKatalogNamirnica()
         {
             InitializeComponent();
