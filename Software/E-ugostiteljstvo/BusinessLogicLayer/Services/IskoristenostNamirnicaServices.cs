@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Repositories;
+﻿using DataAccessLayer.Interfaces;
+using DataAccessLayer.Repositories;
 using EntitiesLayer;
 using EntitiesLayer.Entities;
 using System;
@@ -11,10 +12,16 @@ namespace BusinessLogicLayer.Services
 {
     public class IskoristenostNamirnicaServices
     {
+        private IIskoristenostNamirnicaRepository repo;
+        public IskoristenostNamirnicaServices(IIskoristenostNamirnicaRepository repository)
+        {
+            repo = repository;
+        }
+
         ///<author>Lovro Pejaković</author>
         public List<StavkaIskoristenostNamirnice> GetIskoristeneNamirniceByMonth(int month, int year)
         {
-            using (var repo = new IskoristenostNamirnicaRepository())
+            using (var r = new IskoristenostNamirnicaRepository())
             {
                 return repo.GetIskoristeneNamirniceByMonth(month,year).ToList();
             }
@@ -23,7 +30,7 @@ namespace BusinessLogicLayer.Services
         public bool UpdateIskoristenostNamirnice(iskoristenost_namirnice nam)
         {
             bool isSuccessful = false;
-            using (var repo = new IskoristenostNamirnicaRepository())
+            using (var r = new IskoristenostNamirnicaRepository())
             {
                 int affectedRows = repo.Update(nam);
                 isSuccessful = affectedRows > 0;
@@ -34,7 +41,7 @@ namespace BusinessLogicLayer.Services
         public bool AddIskoristenostNamirnice(iskoristenost_namirnice _namirnica)
         {
             bool isSuccessful = false;
-            using (var repo = new IskoristenostNamirnicaRepository())
+            using (var r = new IskoristenostNamirnicaRepository())
             {
                 int affectedRows = repo.Add(_namirnica);
                 isSuccessful = affectedRows > 0;

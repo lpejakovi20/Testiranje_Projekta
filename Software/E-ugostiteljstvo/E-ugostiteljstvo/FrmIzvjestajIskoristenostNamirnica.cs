@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogicLayer.Services;
+using DataAccessLayer.Repositories;
 
 namespace E_ugostiteljstvo
 {
@@ -26,7 +27,7 @@ namespace E_ugostiteljstvo
         private void FrmIzvjestajIskoristenostNamirnica_Load(object sender, EventArgs e)
         {
             var godina = DateTime.Today.Year;
-            var servis = new IskoristenostNamirnicaServices();
+            var servis = new IskoristenostNamirnicaServices(new IskoristenostNamirnicaRepository());
             stavkaIskoristenostNamirniceBindingSource.DataSource = servis.GetIskoristeneNamirniceByMonth(odabraniMjesec,godina);
 
             var servisZaposlenik = new ZaposlenikServices();

@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.Services;
+using DataAccessLayer.Repositories;
 using EntitiesLayer;
 using System;
 using System.Collections.Generic;
@@ -54,7 +55,7 @@ namespace E_ugostiteljstvo
             var mjesec = cmbMjesec.SelectedIndex + 1;
             var godina = DateTime.Today.Year;
 
-            var service = new IskoristenostNamirnicaServices();
+            var service = new IskoristenostNamirnicaServices(new IskoristenostNamirnicaRepository());
 
             var iskoristenostNamirnica = service.GetIskoristeneNamirniceByMonth(mjesec,godina);
             dgvIskoristenostNamirnica.DataSource = iskoristenostNamirnica;

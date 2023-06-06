@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.Services;
 using DataAccessLayer;
+using DataAccessLayer.Repositories;
 using EntitiesLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -75,7 +76,7 @@ namespace E_ugostiteljstvo
                     var servis = new NamirnicaServices();
                     servis.UpdateNamirnica(novaNamirnica);
 
-                    var servisIskoristenostNamirnica = new IskoristenostNamirnicaServices();
+                    var servisIskoristenostNamirnica = new IskoristenostNamirnicaServices(new IskoristenostNamirnicaRepository());
                     var mjesec = DateTime.Today.Month;
                     var godina = DateTime.Today.Year;
 

@@ -1,4 +1,5 @@
-﻿using EntitiesLayer;
+﻿using DataAccessLayer.Interfaces;
+using EntitiesLayer;
 using EntitiesLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace DataAccessLayer.Repositories
 {
     ///<author>Lovro Pejaković</author>
-    public class IskoristenostNamirnicaRepository : Repository<iskoristenost_namirnice>
+    public class IskoristenostNamirnicaRepository : Repository<iskoristenost_namirnice>, IIskoristenostNamirnicaRepository
     {
         public IskoristenostNamirnicaRepository() : base(new DBModel())
         {
