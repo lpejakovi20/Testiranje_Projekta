@@ -33,8 +33,6 @@ namespace BusinessLogicLayer_IntegrationTests
 
                 //Assert
                 Assert.True(uspjeh);
-
-                transaction.Dispose();
             }
         }
 
@@ -57,8 +55,6 @@ namespace BusinessLogicLayer_IntegrationTests
 
                 //Assert
                 Assert.True(uspjeh);
-
-                transaction.Dispose();
             }
         }
 
