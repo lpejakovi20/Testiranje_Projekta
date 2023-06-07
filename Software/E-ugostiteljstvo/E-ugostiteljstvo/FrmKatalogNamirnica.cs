@@ -69,62 +69,30 @@ namespace E_ugostiteljstvo
         private void btnObrisiPrikaz_Click(object sender, EventArgs e)
         {
             txtSearch.Clear();
-
             ShowKatalogNamirnica();
-
         }
 
         private void Sort(int selectedIndex)
         {
+            List<namirnica_u_katalogu> katalogNamirnica;
             switch (selectedIndex)
             {
                 case 0:
-                    SortirajPoKracemRoku();
+                    katalogNamirnica = services.SortKraciRok();
                     break;
-                case 1: SortirajPoDuzemRoku();
+                case 1:
+                    katalogNamirnica = services.SortDuziRok();
                     break;
                 case 2:
-                    SortirajPoManjojCijeni();
+                    katalogNamirnica = services.SortManjaCijena();
                     break;
                 case 3:
-                    SortirajPoVecojCijeni();
+                    katalogNamirnica = services.SortVecaCijena();
                     break;
-
                 default:
-                    break;
+                    return;
             }
-        }
-
-        private void SortirajPoVecojCijeni()
-        {
-            var katalogNamirnica = services.SortVecaCijena();
-            BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = katalogNamirnica;
-            dgvKatalogNamirnica.DataSource = bindingSource;
-        }
-
-        private void SortirajPoManjojCijeni()
-        {
-            var katalogNamirnica = services.SortManjaCijena();
-            BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = katalogNamirnica;
-            dgvKatalogNamirnica.DataSource = bindingSource;
-        }
-
-        private void SortirajPoDuzemRoku()
-        {
-            var katalogNamirnica = services.SortDuziRok();
-            BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = katalogNamirnica;
-            dgvKatalogNamirnica.DataSource = bindingSource;
-        }
-
-        private void SortirajPoKracemRoku()
-        {
-            var katalogNamirnica = services.SortKraciRok();
-            BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = katalogNamirnica;
-            dgvKatalogNamirnica.DataSource = bindingSource;
+            dgvKatalogNamirnica.DataSource = new BindingSource { DataSource = katalogNamirnica };
         }
 
         private void btnCreateNarudzbenica_Click(object sender, EventArgs e)
@@ -139,7 +107,6 @@ namespace E_ugostiteljstvo
         {
             var form = new FrmDodajNamirnicuUKatalog();
             form.ShowDialog();
-            
         }
 
         private void btnCreateIzdatnica_Click(object sender, EventArgs e)
@@ -149,8 +116,6 @@ namespace E_ugostiteljstvo
             form.ShowDialog();
             Close();
         }
-
-        
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -163,17 +128,14 @@ namespace E_ugostiteljstvo
         private void cmbSort_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             Sort(cmbSort.SelectedIndex);
-            
         }
 
         private void cmbFilters_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
+        {           
             if (cmbFilters.SelectedIndex >= 0)
             {
                 string selectedItem = cmbFilters.SelectedItem.ToString();
-                ShowFiltered(selectedItem);
-                
+                ShowFiltered(selectedItem);                
             }
         }
 

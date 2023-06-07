@@ -82,45 +82,58 @@ namespace E_ugostiteljstvo
             }
             else
             {
-
-                string directoryPath = @"C:\NamirniceQr";
-
-                if (!Directory.Exists(directoryPath))
-                {
-                    Directory.CreateDirectory(directoryPath);
-                }
-                
-                string filePath = @"C:\NamirniceQr\qrCode_" + value.ToString() + ".png";
-                qrCode.Save(filePath, ImageFormat.Png);
-
-                var novaNamirnica = new namirnica_u_katalogu
-                {
-                    id = value,
-                    naziv = txtNaziv.Text,
-                    vrsta = cmbVrstanNamirnice.SelectedItem.ToString(),
-                    minimalne_zalihe = int.Parse(txtMinZalihe.Text),
-                    optimalne_zalihe = int.Parse(txtOptZalihe.Text),
-                    mjerna_jedinica = cmbMjJed.SelectedItem.ToString(),
-                    rok_uporabe = int.Parse(txtRokUporabe.Text),
-                    cijena = decimal.Parse(txtCijena.Text),
-                    zaposlenik_id = LogiraniZaposlenik.Id
-
-                };
-
-                var services = new KatalogNamirnicaServices(new KatalogNamirnicaRepository());
-
-                if (services.AddNamirnica(novaNamirnica))
-                {
-                    MessageBox.Show("Unešena nova namirnica");
-                }
-                else
-                {
-                    MessageBox.Show("Greška u unosu! Pokušajte ponovo!");
-                }
+                namirnica_u_katalogu novaNamirnica = SpremiNovuNamirnicu();
+                UnosNamirnice(novaNamirnica);
                 Close();
             }
 
-            
+
+        }
+
+        private static void UnosNamirnice(namirnica_u_katalogu novaNamirnica)
+        {
+            var services = new KatalogNamirnicaServices(new KatalogNamirnicaRepository());
+
+            if (services.AddNamirnica(novaNamirnica))
+            {
+                MessageBox.Show("Unešena nova namirnica");
+            }
+            else
+            {
+                MessageBox.Show("Greška u unosu! Pokušajte ponovo!");
+            }
+        }
+
+        private namirnica_u_katalogu SpremiNovuNamirnicu()
+        {
+            SpremiQrKod();
+
+            var novaNamirnica = new namirnica_u_katalogu
+            {
+                id = value,
+                naziv = txtNaziv.Text,
+                vrsta = cmbVrstanNamirnice.SelectedItem.ToString(),
+                minimalne_zalihe = int.Parse(txtMinZalihe.Text),
+                optimalne_zalihe = int.Parse(txtOptZalihe.Text),
+                mjerna_jedinica = cmbMjJed.SelectedItem.ToString(),
+                rok_uporabe = int.Parse(txtRokUporabe.Text),
+                cijena = decimal.Parse(txtCijena.Text),
+                zaposlenik_id = LogiraniZaposlenik.Id
+            };
+            return novaNamirnica;
+        }
+
+        private void SpremiQrKod()
+        {
+            string directoryPath = @"C:\NamirniceQr";
+
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            string filePath = @"C:\NamirniceQr\qrCode_" + value.ToString() + ".png";
+            qrCode.Save(filePath, ImageFormat.Png);
         }
 
         private void btnOdustani_Click(object sender, EventArgs e)
@@ -132,5 +145,7 @@ namespace E_ugostiteljstvo
         {
             Help.ShowHelp(this, "..\\..\\HelpCHM\\Help.chm", HelpNavigator.KeywordIndex, "DodajNamirnicuUKatalog");
         }
+
+
     }
 }

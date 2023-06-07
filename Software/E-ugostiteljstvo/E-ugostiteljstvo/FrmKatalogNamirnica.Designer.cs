@@ -86,6 +86,7 @@
             // 
             // cmbFilters
             // 
+            this.cmbFilters.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFilters.FormattingEnabled = true;
             this.cmbFilters.Items.AddRange(new object[] {
             "Mliječni",
@@ -99,9 +100,9 @@
             "Tjestenine",
             "Začini",
             "Životinjski proizvodi"});
-            this.cmbFilters.Location = new System.Drawing.Point(659, 91);
+            this.cmbFilters.Location = new System.Drawing.Point(576, 91);
             this.cmbFilters.Name = "cmbFilters";
-            this.cmbFilters.Size = new System.Drawing.Size(111, 24);
+            this.cmbFilters.Size = new System.Drawing.Size(152, 24);
             this.cmbFilters.TabIndex = 4;
             this.cmbFilters.SelectedIndexChanged += new System.EventHandler(this.cmbFilters_SelectedIndexChanged);
             // 
@@ -110,6 +111,7 @@
             this.dgvKatalogNamirnica.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKatalogNamirnica.Location = new System.Drawing.Point(42, 136);
             this.dgvKatalogNamirnica.Name = "dgvKatalogNamirnica";
+            this.dgvKatalogNamirnica.ReadOnly = true;
             this.dgvKatalogNamirnica.RowHeadersWidth = 51;
             this.dgvKatalogNamirnica.RowTemplate.Height = 24;
             this.dgvKatalogNamirnica.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -119,15 +121,16 @@
             // 
             // cmbSort
             // 
+            this.cmbSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSort.FormattingEnabled = true;
             this.cmbSort.Items.AddRange(new object[] {
             "Sortiraj po najkraćem roku",
             "Sortiraj po najdužem roku",
             "Sortiraj po najmanjoj cijeni",
             "Sortiraj po najvećoj cijeni"});
-            this.cmbSort.Location = new System.Drawing.Point(863, 91);
+            this.cmbSort.Location = new System.Drawing.Point(821, 91);
             this.cmbSort.Name = "cmbSort";
-            this.cmbSort.Size = new System.Drawing.Size(176, 24);
+            this.cmbSort.Size = new System.Drawing.Size(209, 24);
             this.cmbSort.TabIndex = 6;
             this.cmbSort.SelectedIndexChanged += new System.EventHandler(this.cmbSort_SelectedIndexChanged_1);
             // 
@@ -156,6 +159,7 @@
             this.dgvNamirniceUSkladistu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNamirniceUSkladistu.Location = new System.Drawing.Point(42, 454);
             this.dgvNamirniceUSkladistu.Name = "dgvNamirniceUSkladistu";
+            this.dgvNamirniceUSkladistu.ReadOnly = true;
             this.dgvNamirniceUSkladistu.RowHeadersWidth = 51;
             this.dgvNamirniceUSkladistu.RowTemplate.Height = 24;
             this.dgvNamirniceUSkladistu.Size = new System.Drawing.Size(497, 235);
@@ -164,7 +168,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(611, 93);
+            this.label2.Location = new System.Drawing.Point(528, 93);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 16);
             this.label2.TabIndex = 11;
@@ -173,7 +177,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(790, 94);
+            this.label4.Location = new System.Drawing.Point(748, 94);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 16);
             this.label4.TabIndex = 13;

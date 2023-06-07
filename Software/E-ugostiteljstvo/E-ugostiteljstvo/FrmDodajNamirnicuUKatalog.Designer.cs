@@ -59,14 +59,14 @@
             // 
             // txtRokUporabe
             // 
-            this.txtRokUporabe.Location = new System.Drawing.Point(604, 201);
+            this.txtRokUporabe.Location = new System.Drawing.Point(603, 204);
             this.txtRokUporabe.Name = "txtRokUporabe";
             this.txtRokUporabe.Size = new System.Drawing.Size(135, 22);
             this.txtRokUporabe.TabIndex = 1;
             // 
             // txtOptZalihe
             // 
-            this.txtOptZalihe.Location = new System.Drawing.Point(604, 92);
+            this.txtOptZalihe.Location = new System.Drawing.Point(603, 92);
             this.txtOptZalihe.Name = "txtOptZalihe";
             this.txtOptZalihe.Size = new System.Drawing.Size(135, 22);
             this.txtOptZalihe.TabIndex = 2;
@@ -80,6 +80,7 @@
             // 
             // cmbMjJed
             // 
+            this.cmbMjJed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMjJed.FormattingEnabled = true;
             this.cmbMjJed.Items.AddRange(new object[] {
             "kom",
@@ -87,7 +88,7 @@
             "g",
             "ml",
             "l"});
-            this.cmbMjJed.Location = new System.Drawing.Point(604, 145);
+            this.cmbMjJed.Location = new System.Drawing.Point(603, 149);
             this.cmbMjJed.Name = "cmbMjJed";
             this.cmbMjJed.Size = new System.Drawing.Size(135, 24);
             this.cmbMjJed.TabIndex = 5;
@@ -104,7 +105,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(601, 126);
+            this.label2.Location = new System.Drawing.Point(600, 130);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 16);
             this.label2.TabIndex = 7;
@@ -113,7 +114,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(601, 73);
+            this.label3.Location = new System.Drawing.Point(600, 73);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(109, 16);
             this.label3.TabIndex = 8;
@@ -140,7 +141,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(601, 182);
+            this.label6.Location = new System.Drawing.Point(600, 185);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(147, 16);
             this.label6.TabIndex = 11;
@@ -196,6 +197,7 @@
             // 
             // cmbVrstanNamirnice
             // 
+            this.cmbVrstanNamirnice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVrstanNamirnice.FormattingEnabled = true;
             this.cmbVrstanNamirnice.Items.AddRange(new object[] {
             "Mliječni",
