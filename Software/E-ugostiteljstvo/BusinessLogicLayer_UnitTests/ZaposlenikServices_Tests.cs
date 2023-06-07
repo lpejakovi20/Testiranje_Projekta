@@ -91,5 +91,14 @@ namespace BusinessLogicLayer_UnitTests {
             //Assert
             Assert.Null(dohvaceniZaposelnik);
         }
+        [Fact]
+        public void GetZaposlenici_ReturnsZaposlenici() {
+            //Arrange
+            ZaposlenikServices servis = new ZaposlenikServices(new FakeZaposlenikRepository());
+            //Act
+            var zaposlenici = servis.GetZaposlenici();
+            //Assert
+            Assert.IsType<List<zaposlenik>>(zaposlenici);
+        }
     }
 }

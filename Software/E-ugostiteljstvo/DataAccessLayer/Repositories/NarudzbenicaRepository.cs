@@ -58,5 +58,11 @@ namespace DataAccessLayer.Repositories
 
             return query;
         }
+
+       public override IQueryable<narudzbenica> GetAll() {
+            var query = from p in Entities
+                        select p;
+            return query;
+        }
     }
 }

@@ -40,6 +40,11 @@ namespace DataAccessLayer.Repositories
 
             return query;
         }
+        public virtual IQueryable<zaposlenik> GetAll() {
+            var query = from x in Entities
+                        select x;
+            return query;
+        }
 
         public override int Update(zaposlenik entity, bool saveChanges = true)
         {

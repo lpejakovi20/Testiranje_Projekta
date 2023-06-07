@@ -12,5 +12,6 @@ namespace DataAccessLayer.Interfaces
         int Update(narudzbenica entity, bool saveChanges = true);
         int Add(narudzbenica entity, bool saveChanges = true);
         narudzbenica GetNarudzbenicaById(int narudzbenicaId);
+        IQueryable<narudzbenica> GetAll();
     }
 }
