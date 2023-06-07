@@ -44,7 +44,16 @@ namespace BusinessLogicLayer_UnitTests.FakeRepository
 
         public IQueryable<namirnica_u_katalogu> GetKatalogNamirnicaByName(string phrase)
         {
-            throw new NotImplementedException();
+            var list = new List<namirnica_u_katalogu>();
+            if(phrase == null)
+            {
+                IQueryable<namirnica_u_katalogu> queryPrazan = list.AsQueryable();
+                return queryPrazan;
+            }
+            var novaNamirnica = new namirnica_u_katalogu() { id = 1, naziv = "Ananas", cijena = 12, vrsta = "Voće", mjerna_jedinica = "kom", minimalne_zalihe = 4, optimalne_zalihe = 5, rok_uporabe = 12 };
+            list.Add(novaNamirnica);
+            IQueryable<namirnica_u_katalogu> query = list.AsQueryable();
+            return query;
         }
 
         public int Update(namirnica_u_katalogu entity, bool saveChanges = true)

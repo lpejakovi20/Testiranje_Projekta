@@ -111,6 +111,66 @@ namespace BusinessLogicLayer_UnitTests
             //Assert
             Assert.Empty(namirnice);
         }
-
+        ///<author>Nikola Parag</author>
+        [Fact]
+        public void GetNamirniceUskladistu_GivenNamirnicaIdIsNotValid_ReturnsEmptyList()
+        {
+            //Arrange
+            NamirnicaServices service = new NamirnicaServices(new FakeNamirnicaRepository());
+            var id = -123;
+            //Act
+            var namirnice = service.GetNamirniceUSkladistu(id);
+            //Assert
+            Assert.Empty(namirnice);
+        }
+        ///<author>Nikola Parag</author>
+        [Fact]
+        public void GetNamirniceUskladistu_GivenNamirnicaIdDoesNotExists_ReturnsEmptyList()
+        {
+            //Arrange
+            NamirnicaServices service = new NamirnicaServices(new FakeNamirnicaRepository());
+            var id = 562;
+            //Act
+            var namirnice = service.GetNamirniceUSkladistu(id);
+            //Assert
+            Assert.Empty(namirnice);
+        }
+        ///<author>Nikola Parag</author>
+        [Fact]
+        public void GetNamirniceUskladistu_GivenNamirnicaIdExists_ReturnsListWithItems()
+        {
+            //Arrange
+            NamirnicaServices service = new NamirnicaServices(new FakeNamirnicaRepository());
+            var id = 13;
+            //Act
+            var namirnice = service.GetNamirniceUSkladistu(id);
+            //Assert
+            Assert.NotEmpty(namirnice);
+        }
+        ///<author>Nikola Parag</author>
+        [Fact]
+        public void GetNamirniceUskladistu_GivenNamirnicaIdExists_ReturnsCorrectItems()
+        {
+            //Arrange
+            NamirnicaServices service = new NamirnicaServices(new FakeNamirnicaRepository());
+            var id = 13;
+            //Act
+            var namirnice = service.GetNamirniceUSkladistu(id);
+            //Assert
+            Assert.True(namirnice.All(item => item.namirnica_u_katalogu_id == id));
+        }
+        ///<author>Nikola Parag</author>
+        [Fact]
+        public void GetNamirniceBlizuRoka_ReturnsListaNamirnicaBlizuRoka()
+        {
+            //Arrange
+            NamirnicaServices service = new NamirnicaServices(new FakeNamirnicaRepository());
+            var today = DateTime.Today;
+            var date = today.AddDays(7);
+            //Act
+            var namirnice = service.GetNamirniceBlizuRoka();
+            //Assert
+            Assert.True(namirnice.All(x => x.rok >= today && x.rok <= date));
+        }
     }
 }

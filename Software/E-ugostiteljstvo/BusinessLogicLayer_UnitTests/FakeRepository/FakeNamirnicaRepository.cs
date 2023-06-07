@@ -64,12 +64,42 @@ namespace BusinessLogicLayer_UnitTests.FakeRepository
 
         public IQueryable<StavkaIzvjestajaBlizuRoka> GetNamirniceBlizuRoka()
         {
-            throw new NotImplementedException();
+            var lista = new List<StavkaIzvjestajaBlizuRoka>()
+            {
+                new StavkaIzvjestajaBlizuRoka(){id = 43,kolicina = 12, rok = DateTime.Today, naziv = "Banana"},
+                new StavkaIzvjestajaBlizuRoka(){id = 44,kolicina = 12, rok = DateTime.Today, naziv = "Žele"},
+                new StavkaIzvjestajaBlizuRoka(){id = 45,kolicina = 12, rok = DateTime.Today, naziv = "Parizer"}
+            };
+            IQueryable<StavkaIzvjestajaBlizuRoka> query = lista.AsQueryable();
+
+            return query;
         }
 
         public IQueryable<namirnica> GetNamirniceByKatalogId(int namirnica_id)
         {
-            throw new NotImplementedException();
+            var listaTocna = new List<namirnica>();
+            var today = DateTime.Today;
+            if(namirnica_id < 0)
+            {
+                IQueryable<namirnica> query1 = listaTocna.AsQueryable();
+                return query1;
+            }
+            
+            var lista = new List<namirnica>()
+            {
+                new namirnica(){id = 43,kolicina = 12, rok = DateTime.Today, namirnica_u_katalogu_id = 13},
+                new namirnica(){id = 44,kolicina = 12, rok = DateTime.Today, namirnica_u_katalogu_id = 14},
+                new namirnica(){id = 45,kolicina = 12, rok = DateTime.Today, namirnica_u_katalogu_id = 15}
+            };
+            foreach(var item in lista)
+            {
+                if (item.namirnica_u_katalogu_id == namirnica_id && item.rok >= today)
+                {
+                    listaTocna.Add(item);
+                }
+            }
+            IQueryable<namirnica> query = listaTocna.AsQueryable();
+            return query;
         }
 
         public IQueryable<dynamic> GetNamirniceIstecenogRoka()

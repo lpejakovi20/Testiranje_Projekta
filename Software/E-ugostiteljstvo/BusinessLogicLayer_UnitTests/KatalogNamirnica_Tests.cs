@@ -74,10 +74,44 @@ namespace BusinessLogicLayer_UnitTests
             //Act
             var filtriranaLista = katalogServices.GetFiltered(odabraniFilter);
             //Assert
-            foreach (var obj in filtriranaLista)
-            {
-                Assert.Equal("Meso", obj.vrsta);
-            }
+            Assert.True(filtriranaLista.All(obj => obj.vrsta == "Meso"));
+        }
+
+        [Fact]
+
+        public static void GetKatalogNamirnicaByName_GivenNameIsNull_ReturnsEmptyList()
+        {
+            //Arange
+            KatalogNamirnicaServices katalogServices = new KatalogNamirnicaServices(new FakeKatalogNamirnicaRepository());
+
+            //Act
+            var filtriranaLista = katalogServices.GetKatalogNamirnicaByName(null);
+            //Assert
+            Assert.Empty(filtriranaLista);
+        }
+        [Fact]
+
+        public static void GetKatalogNamirnicaByName_GivenNameIsNotNull_ReturnsFilledList()
+        {
+            //Arange
+            KatalogNamirnicaServices katalogServices = new KatalogNamirnicaServices(new FakeKatalogNamirnicaRepository());
+            var phrase = "Jabuka";
+            //Act
+            var filtriranaLista = katalogServices.GetKatalogNamirnicaByName(phrase);
+            //Assert
+            Assert.NotEmpty(filtriranaLista);
+        }
+        [Fact]
+
+        public static void GetKatalogNamirnicaByName_GivenNameIsNotNull_ReturnsCorrectItems()
+        {
+            //Arange
+            KatalogNamirnicaServices katalogServices = new KatalogNamirnicaServices(new FakeKatalogNamirnicaRepository());
+            var phrase = "Ananas";
+            //Act
+            var filtriranaLista = katalogServices.GetKatalogNamirnicaByName(phrase);
+            //Assert
+            Assert.True(filtriranaLista.All(obj => obj.naziv.Contains(phrase)));
         }
     }
 }
