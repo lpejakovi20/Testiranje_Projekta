@@ -56,10 +56,11 @@ namespace BusinessLogicLayer_UnitTests
         public void GetNarudzbeniceById_GivenNarudzbenicaExists_ReturnsNarudzbenica() {
             //Arrange
             NarudzbenicaServices servis = new NarudzbenicaServices(new FakeNarudzbenicaRepository());
+            var id = 125;
             //Act
-            var narudzbenica = servis.GetNarudzbenicaById(125);
+            var narudzbenica = servis.GetNarudzbenicaById(id);
             //Assert
-            Assert.IsType<narudzbenica>(narudzbenica);
+            Assert.Equal(narudzbenica.id, id);
         }
         [Fact]
         public void GetNarudzbeniceById_GivenNarudzbenicaIsNotValid_ReturnsNull() {

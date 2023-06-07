@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.Services;
 using DataAccessLayer.Repositories;
+using EntitiesLayer;
 using EntitiesLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -74,6 +75,26 @@ namespace BusinessLogicLayer_IntegrationTests
 
             //Assert
             Assert.IsType<List<dynamic>>(iskoristeneNamirnice);
+        }
+
+        [Fact]
+        public void GetNamirniceById_GivenNamirnicaIdExists_ReturnsListOfNamirnica() {
+            //Arrange
+            NamirnicaServices service = new NamirnicaServices(new NamirnicaRepository());
+            //Act
+            var namirnice = service.GetNamirniceById(5);
+            //Assert
+            Assert.IsType<List<namirnica>>(namirnice);
+        }
+
+        [Fact]
+        public void GetDostupneKolicineNamirnica_ReturnsListOfNamirnica() {
+            //Arrange
+            NamirnicaServices service = new NamirnicaServices(new NamirnicaRepository());
+            //Act
+            var dostupneNamirnice = service.GetDostupneKolicineNamirnica();
+            //Assert
+            Assert.IsType<List<StavkaNarudzbenice>>(dostupneNamirnice);
         }
     }
 }

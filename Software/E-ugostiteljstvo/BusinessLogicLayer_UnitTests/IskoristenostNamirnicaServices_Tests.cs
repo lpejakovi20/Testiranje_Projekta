@@ -73,8 +73,8 @@ namespace BusinessLogicLayer_UnitTests
             //Act
             var uspjeh = service.UpdateIskoristenostNamirnice(null);
 
-            //Assert
             Assert.False(uspjeh);
+            //Assert
         }
 
         [Fact]
