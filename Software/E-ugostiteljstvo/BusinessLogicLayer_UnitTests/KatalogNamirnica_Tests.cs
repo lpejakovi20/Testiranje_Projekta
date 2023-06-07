@@ -136,5 +136,65 @@ namespace BusinessLogicLayer_UnitTests
             Assert.Null(namirnicaIzKatalog);
 
         }
+        [Fact]
+        public void GetKatalogNamirnica_RetrurnsKatalogNamirnica()
+        {
+            //Arrange
+            KatalogNamirnicaServices servis = new KatalogNamirnicaServices(new FakeKatalogNamirnicaRepository());
+            
+            //Act
+            var namirnicaIzKatalog = servis.GetKatalogNamirnica();
+            //Assert
+            Assert.NotEmpty(namirnicaIzKatalog);
+
+        }
+        [Fact]
+        public void GetKatalogNamirnica_RetrurnsSortiranoPoKracemRokuTrajanja()
+        {
+            //Arrange
+            KatalogNamirnicaServices servis = new KatalogNamirnicaServices(new FakeKatalogNamirnicaRepository());
+
+            //Act
+            var namirnice = servis.SortKraciRok();
+            var sortirane = namirnice.OrderBy(o => o.rok_uporabe);
+            //Assert
+            Assert.True(namirnice.SequenceEqual(sortirane));
+        }
+        [Fact]
+        public void GetKatalogNamirnica_RetrurnsSortiranoPoDuzemRokuTrajanja()
+        {
+            //Arrange
+            KatalogNamirnicaServices servis = new KatalogNamirnicaServices(new FakeKatalogNamirnicaRepository());
+
+            //Act
+            var namirnice = servis.SortDuziRok();
+            var sortirane = namirnice.OrderByDescending(o => o.rok_uporabe);
+            //Assert
+            Assert.True(namirnice.SequenceEqual(sortirane));
+        }
+        [Fact]
+        public void GetKatalogNamirnica_RetrurnsSortiranoPoManjojCijeni()
+        {
+            //Arrange
+            KatalogNamirnicaServices servis = new KatalogNamirnicaServices(new FakeKatalogNamirnicaRepository());
+
+            //Act
+            var namirnice = servis.SortManjaCijena();
+            var sortirane = namirnice.OrderBy(o => o.cijena);
+            //Assert
+            Assert.True(namirnice.SequenceEqual(sortirane));
+        }
+        [Fact]
+        public void GetKatalogNamirnica_RetrurnsSortiranoPoVecojCijeni()
+        {
+            //Arrange
+            KatalogNamirnicaServices servis = new KatalogNamirnicaServices(new FakeKatalogNamirnicaRepository());
+
+            //Act
+            var namirnice = servis.SortVecaCijena();
+            var sortirane = namirnice.OrderByDescending(o => o.cijena);
+            //Assert
+            Assert.True(namirnice.SequenceEqual(sortirane));
+        }
     }
 }

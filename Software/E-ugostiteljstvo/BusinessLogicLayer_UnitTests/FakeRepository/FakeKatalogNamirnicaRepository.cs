@@ -21,7 +21,14 @@ namespace BusinessLogicLayer_UnitTests.FakeRepository
 
         public IQueryable<namirnica_u_katalogu> GetAll()
         {
-            throw new NotImplementedException();
+            List<namirnica_u_katalogu> lista = new List<namirnica_u_katalogu>()
+            {
+                new namirnica_u_katalogu(){id=333,naziv="Patka",vrsta="Meso",mjerna_jedinica = "kg",minimalne_zalihe = 4, optimalne_zalihe = 5, cijena = 12, rok_uporabe = 12},
+                new namirnica_u_katalogu(){id=333,naziv="Guska",vrsta="Meso",mjerna_jedinica = "kg",minimalne_zalihe = 4, optimalne_zalihe = 5, cijena = 12, rok_uporabe = 12},
+                new namirnica_u_katalogu(){id=333,naziv="Paprika",vrsta="Povrće",mjerna_jedinica = "kg",minimalne_zalihe = 4, optimalne_zalihe = 5, cijena = 12, rok_uporabe = 12}
+            };
+            IQueryable<namirnica_u_katalogu> query = lista.AsQueryable();
+            return query;
         }
 
         public IQueryable<namirnica_u_katalogu> GetFiltered(string selecteditem)
