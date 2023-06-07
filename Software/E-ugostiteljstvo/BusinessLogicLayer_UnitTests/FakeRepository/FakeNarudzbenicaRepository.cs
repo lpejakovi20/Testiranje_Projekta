@@ -30,7 +30,7 @@ namespace BusinessLogicLayer_UnitTests.FakeRepository
             if (narudzbenicaId < 1) {
                 return null;
             }
-
+           
             var novaNarudzbenica = new narudzbenica {
                id = 125,
                datum_kreiranja = DateTime.Now,

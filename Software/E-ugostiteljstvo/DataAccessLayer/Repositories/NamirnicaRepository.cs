@@ -36,7 +36,7 @@ namespace DataAccessLayer.Repositories
             }
         }
         ///<author>Nikola Parag</author>
-        public IQueryable<namirnica> GetAll(int id)
+        public IQueryable<namirnica> GetNamirniceById(int id)
         {
             var query = from p in Entities.Include("namirnica_u_katalogu")
                         where p.namirnica_u_katalogu_id == id

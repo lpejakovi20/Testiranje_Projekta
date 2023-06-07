@@ -2,6 +2,7 @@
 using EntitiesLayer;
 using EntitiesLayer.Entities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +21,45 @@ namespace BusinessLogicLayer_UnitTests.FakeRepository
             else return 0;
         }
 
-        public IQueryable<namirnica> GetAll(int id)
+        public IQueryable<namirnica> GetNamirniceById(int id)
         {
-            throw new NotImplementedException();
+            if (id < 1) {
+                return null;
+            }
+            List<namirnica> listaNamirnica = new List<namirnica>();
+            List<namirnica> praznaLista=new List<namirnica>();
+            var novaNamirnica = new namirnica {
+                id = 2,
+                kolicina = 3,
+                rok = DateTime.Now,
+                namirnica_u_katalogu_id = 3
+            };
+            listaNamirnica.Add(novaNamirnica);
+            IQueryable<namirnica> lista = listaNamirnica.AsQueryable().Take(1);
+            if (novaNamirnica.namirnica_u_katalogu_id == id) {
+                return lista;
+            } else return praznaLista.AsQueryable();
         }
 
         public IQueryable<StavkaNarudzbenice> GetDostupneKolicineNamirnica()
         {
-            throw new NotImplementedException();
+           
+            List<StavkaNarudzbenice> listaNamirnica = new List<StavkaNarudzbenice>();
+           
+            var novaStavkaNarudzbencice = new StavkaNarudzbenice {
+                Id = 2,
+                Naziv = "Mlijeko",
+                Vrsta = "Mliječni proizvod",
+                Kolicina = 2,
+                MjernaJedinica = "kg",
+                Cijena = 2,
+                Iznos =  4
+            };
+            listaNamirnica.Add(novaStavkaNarudzbencice);
+            IQueryable<StavkaNarudzbenice> lista = listaNamirnica.AsQueryable().Take(1);
+           
+                return lista;
+            
         }
 
         public IQueryable<StavkaIzvjestajaBlizuRoka> GetNamirniceBlizuRoka()

@@ -11,7 +11,7 @@ namespace DataAccessLayer.Interfaces
     public interface INamirnicaRepository
     {
         int Update(namirnica entity, bool saveChanges = true);
-        IQueryable<namirnica> GetAll(int id);
+        IQueryable<namirnica> GetNamirniceById(int id);
         IQueryable<namirnica> GetNamirniceByKatalogId(int namirnica_id);
         int Add(namirnica entity, bool saveChanges = true);
         IQueryable<StavkaIzvjestajaBlizuRoka> GetNamirniceBlizuRoka();

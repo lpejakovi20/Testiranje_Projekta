@@ -66,7 +66,7 @@ namespace E_ugostiteljstvo
                 var servisNamirnica = new NamirnicaServices(new NamirnicaRepository());
                 var servisNamirnicaKatalog = new KatalogNamirnicaServices();
 
-                var namirnice = servisNamirnica.GetAll(id);
+                var namirnice = servisNamirnica.GetNamirniceById(id);
                 var namirnicaKatalog = servisNamirnicaKatalog.GetKatalogNamirnicaById(id);
 
                 var namirniceIstiDatum = namirnice.Find(n => n.rok.Date == nova.rok.AddDays(namirnicaKatalog.rok_uporabe).Date);
