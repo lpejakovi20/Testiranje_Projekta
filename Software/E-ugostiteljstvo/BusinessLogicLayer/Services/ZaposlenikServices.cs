@@ -37,7 +37,7 @@ namespace BusinessLogicLayer.Services
             }
         }
         ///<author>Lovro Pejaković</author>
-        public object GetZaposlenikById(int id)
+        public zaposlenik GetZaposlenikById(int id)
         {
             using (var r = new ZaposlenikRepository())
             {

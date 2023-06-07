@@ -100,5 +100,29 @@ namespace BusinessLogicLayer_UnitTests {
             //Assert
             Assert.IsType<List<zaposlenik>>(zaposlenici);
         }
+
+        [Fact]
+        public void GetZaposelnikById_GivenZaposlenikIdExists_ReturnsZaposlenik()
+        {
+            // Arrange
+            ZaposlenikServices zaposlenikServices = new ZaposlenikServices(new FakeZaposlenikRepository());
+            var id = 7;
+            //Act
+            var dohvaceniZaposelnik = zaposlenikServices.GetZaposlenikById(id);
+            //Assert
+            Assert.Equal(dohvaceniZaposelnik.id, id);
+        }
+
+        [Fact]
+        public void GetZaposelnikById_GivenZaposlenikIdNotExists_ReturnsNull()
+        {
+            // Arrange
+            ZaposlenikServices zaposlenikServices = new ZaposlenikServices(new FakeZaposlenikRepository());
+            var id = 99;
+            //Act
+            var dohvaceniZaposelnik = zaposlenikServices.GetZaposlenikById(id);
+            //Assert
+            Assert.Null(dohvaceniZaposelnik);
+        }
     }
 }
