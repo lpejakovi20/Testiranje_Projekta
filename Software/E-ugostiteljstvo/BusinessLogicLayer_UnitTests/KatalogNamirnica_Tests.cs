@@ -79,5 +79,28 @@ namespace BusinessLogicLayer_UnitTests
                 Assert.Equal("Meso", obj.vrsta);
             }
         }
+
+        [Fact]
+        public void GetKatalogNamirniceById_GivenNamirnicaIdExists_RetrurnsNamirnicaUKatalogu() {
+            //Arrange
+            KatalogNamirnicaServices servis = new KatalogNamirnicaServices(new FakeKatalogNamirnicaRepository());
+            int idNamirnice = 125;
+            //Act
+            var namirnicaIzKatalog = servis.GetKatalogNamirnicaById(idNamirnice);
+            //Assert
+            Assert.Equal(namirnicaIzKatalog.id, idNamirnice);
+
+        }
+        [Fact]
+        public void GetKatalogNamirniceById_GivenNamirnicaIdDoesntExists_RetrurnsNull() {
+            //Arrange
+            KatalogNamirnicaServices servis = new KatalogNamirnicaServices(new FakeKatalogNamirnicaRepository());
+            int idNamirnice = 12;
+            //Act
+            var namirnicaIzKatalog = servis.GetKatalogNamirnicaById(idNamirnice);
+            //Assert
+            Assert.Null(namirnicaIzKatalog);
+
+        }
     }
 }

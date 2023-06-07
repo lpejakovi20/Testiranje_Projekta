@@ -9,12 +9,18 @@ using EntitiesLayer.Entities;
 namespace DataAccessLayer.Repositories
 {
     ///<author>Matej Ritoša</author>
-    public class UlogaRepository : Repository<uloga> 
+    public class UlogaRepository : Repository<uloga> , IUlogaRepository
     {
         public UlogaRepository() : base(new DBModel())
         {
         }
 
+       
+        public virtual IQueryable<uloga> GetAll() {
+            var query = from x in Entities
+                        select x;
+            return query;
+        }
         public override int Update(uloga entity, bool saveChanges = true)
         {
             var uloga = Entities.SingleOrDefault(c => c.id == entity.id);

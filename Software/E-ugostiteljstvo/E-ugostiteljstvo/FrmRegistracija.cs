@@ -154,7 +154,7 @@ namespace E_ugostiteljstvo
 
         private void UcitajUloge()
         {
-            var ulogaServices = new UlogaServices();
+            var ulogaServices = new UlogaServices(new UlogaRepository());
             var uloge = ulogaServices.GetUloge();
             cmbRadnoMjesto.DataSource = uloge;
         }

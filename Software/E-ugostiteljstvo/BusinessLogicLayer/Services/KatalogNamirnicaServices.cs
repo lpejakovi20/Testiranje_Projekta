@@ -13,6 +13,7 @@ namespace BusinessLogicLayer.Services
     {
         ///<author>Nikola Parag</author>
         private IKatalogNamirnicaRepository repo;
+        
         public KatalogNamirnicaServices(IKatalogNamirnicaRepository repository)
         {
             repo = repository;
@@ -54,7 +55,7 @@ namespace BusinessLogicLayer.Services
         ///<author>Matej Ritoša</author>
         public namirnica_u_katalogu GetKatalogNamirnicaById(int id)
         {
-            using (var repo = new KatalogNamirnicaRepository())
+            using (var r = new KatalogNamirnicaRepository())
             {
                 return repo.GetKatalogNamirnicaById(id);
             }
@@ -70,7 +71,7 @@ namespace BusinessLogicLayer.Services
         ///<author>Nikola Parag</author>
         public List<namirnica_u_katalogu> SortKraciRok()
         {
-            using (var repo = new KatalogNamirnicaRepository())
+            using (var r = new KatalogNamirnicaRepository())
             {
                 return repo.GetAll().OrderBy(x => x.rok_uporabe).ToList();
             }

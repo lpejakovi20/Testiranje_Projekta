@@ -13,5 +13,7 @@ namespace DataAccessLayer.Interfaces {
         int Update(zaposlenik entity, bool saveChanges = true);
 
         int Add(zaposlenik entity, bool saveChanges = true);
+        IQueryable<zaposlenik> GetAll();
+        
     }
 }

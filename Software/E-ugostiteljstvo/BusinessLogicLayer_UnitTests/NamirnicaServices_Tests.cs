@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.Services;
 using BusinessLogicLayer_UnitTests.FakeRepository;
+using EntitiesLayer;
 using EntitiesLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -111,6 +112,16 @@ namespace BusinessLogicLayer_UnitTests
             //Assert
             Assert.Empty(namirnice);
         }
+        [Fact]
+        public void GetDostupneKolicineNamirnica_ReturnsListOfNamirnica() {
+            //Arrange
+            NamirnicaServices service = new NamirnicaServices(new FakeNamirnicaRepository());
+            //Act
+            var dostupneNamirnice = service.GetDostupneKolicineNamirnica();
+            //Assert
+            Assert.IsType<List<StavkaNarudzbenice>>(dostupneNamirnice);
+        }
+
 
     }
 }

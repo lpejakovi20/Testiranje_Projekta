@@ -31,7 +31,7 @@ namespace BusinessLogicLayer.Services
         ///<author>Matej Ritoša</author>
         public List<zaposlenik> GetZaposlenici()
         {
-            using (var repo = new ZaposlenikRepository())
+            using (var r = new ZaposlenikRepository())
             {
                 return repo.GetAll().ToList();
             }
