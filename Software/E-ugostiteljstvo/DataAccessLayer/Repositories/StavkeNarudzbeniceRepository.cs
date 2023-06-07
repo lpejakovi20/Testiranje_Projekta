@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccessLayer.Interfaces;
 using EntitiesLayer.Entities;
 
 namespace DataAccessLayer.Repositories
 {
     ///<author>Matej Ritoša</author>
-    public class StavkeNarudzbeniceRepository : Repository<namirnica_narudzbenica>
+    public class StavkeNarudzbeniceRepository : Repository<namirnica_narudzbenica> , IStavkeNarudzbeniceRepository
     {
         public StavkeNarudzbeniceRepository() : base(new DBModel())
         {

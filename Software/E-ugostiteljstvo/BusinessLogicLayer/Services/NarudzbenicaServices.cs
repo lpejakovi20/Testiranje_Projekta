@@ -81,7 +81,7 @@ namespace BusinessLogicLayer.Services
 
         public narudzbenica GetNarudzbenicaById(int narudzbenicaId)
         {
-            using (var repo = new NarudzbenicaRepository())
+            using (var r = new NarudzbenicaRepository())
             {
                 return repo.GetNarudzbenicaById(narudzbenicaId);
             }

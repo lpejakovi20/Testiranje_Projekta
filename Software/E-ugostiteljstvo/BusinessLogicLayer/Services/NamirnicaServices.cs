@@ -18,11 +18,11 @@ namespace BusinessLogicLayer.Services
             repo = repository;
         }
         ///<author>Matej Ritoša</author>
-        public List<namirnica> GetAll(int id)
+        public List<namirnica> GetNamirniceById(int id)
         {
             using (var r = new NamirnicaRepository())
             {
-                return repo.GetAll(id).ToList();
+                return repo.GetNamirniceById(id).ToList();
             }
         }
         ///<author>Lovro Pejaković</author>

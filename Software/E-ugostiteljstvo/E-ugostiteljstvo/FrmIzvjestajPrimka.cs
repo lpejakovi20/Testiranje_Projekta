@@ -18,6 +18,8 @@ namespace E_ugostiteljstvo
     {
         private narudzbenica SelektiranaNarudzbenica;
         NarudzbenicaServices servisNarudzbenice = new NarudzbenicaServices(new NarudzbenicaRepository());
+        KatalogNamirnicaServices servisKatalog = new KatalogNamirnicaServices();
+        ZaposlenikServices servisZaposlenik = new ZaposlenikServices(new ZaposlenikRepository());
         KatalogNamirnicaServices servisKatalog = new KatalogNamirnicaServices(new KatalogNamirnicaRepository());
         ZaposlenikServices servisZaposlenik = new ZaposlenikServices();
 

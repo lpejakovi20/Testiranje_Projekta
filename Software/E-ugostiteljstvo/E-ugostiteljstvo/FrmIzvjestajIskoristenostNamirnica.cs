@@ -30,7 +30,7 @@ namespace E_ugostiteljstvo
             var servis = new IskoristenostNamirnicaServices(new IskoristenostNamirnicaRepository());
             stavkaIskoristenostNamirniceBindingSource.DataSource = servis.GetIskoristeneNamirniceByMonth(odabraniMjesec,godina);
 
-            var servisZaposlenik = new ZaposlenikServices();
+            var servisZaposlenik = new ZaposlenikServices(new ZaposlenikRepository());
             zaposlenikBindingSource.DataSource = servisZaposlenik.GetZaposlenikById(idZaposlenika);
 
             this.reportViewer1.RefreshReport();

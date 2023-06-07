@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccessLayer.Interfaces;
 using EntitiesLayer.Entities;
 
 namespace DataAccessLayer.Repositories
 {
     ///<author>Matej Ritoša</author>
-    public class UlogaRepository : Repository<uloga>
+    public class UlogaRepository : Repository<uloga> 
     {
         public UlogaRepository() : base(new DBModel())
         {

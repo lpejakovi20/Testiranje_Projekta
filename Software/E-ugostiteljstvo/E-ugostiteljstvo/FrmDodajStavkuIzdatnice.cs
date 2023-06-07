@@ -99,7 +99,7 @@ namespace E_ugostiteljstvo
                             txtVrsta.Text = namirnicaKatalog.vrsta;
 
                             var servisNamirnica = new NamirnicaServices(new NamirnicaRepository());
-                            var namirnice = servisNamirnica.GetAll(Int32.Parse(result.ToString()));
+                            var namirnice = servisNamirnica.GetNamirniceById(Int32.Parse(result.ToString()));
 
                             cmbRokTrajanja.DataSource = namirnice;
                             cmbRokTrajanja.SelectedIndex = 0;

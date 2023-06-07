@@ -90,5 +90,27 @@ namespace BusinessLogicLayer_UnitTests
             //Assert
             Assert.IsType<List<dynamic>>(iskoristeneNamirnice);
         }
+
+
+        [Fact]
+        public void GetNamirniceById_GivenNamirnicaIdExists_ReturnsListOfNamirnica() {
+            //Arrange
+            NamirnicaServices service = new NamirnicaServices(new FakeNamirnicaRepository());
+            //Act
+            var namirnice = service.GetNamirniceById(3);
+            //Assert
+            Assert.IsType<List<namirnica>>(namirnice);
+        }
+
+        [Fact]
+        public void GetNamirniceById_GivenNamirnicaIdDoesNotExist_ReturnsEmptyList() {
+            //Arrange
+            NamirnicaServices service = new NamirnicaServices(new FakeNamirnicaRepository());
+            //Act
+            var namirnice = service.GetNamirniceById(112);
+            //Assert
+            Assert.Empty(namirnice);
+        }
+
     }
 }

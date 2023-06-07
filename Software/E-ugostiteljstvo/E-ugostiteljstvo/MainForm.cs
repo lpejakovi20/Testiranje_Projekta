@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogicLayer.Services;
+using DataAccessLayer.Repositories;
 using EntitiesLayer;
 
 namespace E_ugostiteljstvo
@@ -27,7 +28,7 @@ namespace E_ugostiteljstvo
 
         private void btnLogin_Click_1(object sender, EventArgs e)
         {
-            var servisZaposlenik = new ZaposlenikServices();
+            var servisZaposlenik = new ZaposlenikServices(new ZaposlenikRepository());
             var zaposlenik = servisZaposlenik.GetZaposlenikByEmail(txtEmail.Text);
 
 
