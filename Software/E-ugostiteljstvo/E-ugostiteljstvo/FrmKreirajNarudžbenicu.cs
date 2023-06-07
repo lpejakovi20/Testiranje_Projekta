@@ -19,7 +19,7 @@ namespace E_ugostiteljstvo
     {
         KatalogNamirnicaServices servisNamirnica = new KatalogNamirnicaServices();
         NarudzbenicaServices servisNarudzbenica = new NarudzbenicaServices(new NarudzbenicaRepository());
-        StavkeNarudzbeniceServices servisStavke = new StavkeNarudzbeniceServices();
+        StavkeNarudzbeniceServices servisStavke = new StavkeNarudzbeniceServices(new StavkeNarudzbeniceRepository());
         NamirnicaServices namirnica = new NamirnicaServices(new NamirnicaRepository());
 
         public FrmKreirajNarudžbenicu()
