@@ -1,0 +1,43 @@
+name: Build And Test CI/CD Workflow
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3.5.2
+    - name: SetupNuget
+      uses: NuGet/setup-nuget@v1.2.0 
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v1.3.1
+    - name: Navigate to root folder
+      run: cd $GITHUB_WORKSPACE
+    - name: Restore NuGet Packages
+      run: nuget restore
+    - name: Build solution
+      run: msbuild /p:platform="Any CPU" /p:configuration=Release
+    - name: Run Unit Test
+      run: dotnet test --configuration Release --filter BusinessLogicLayer_UnitTests
+    - name: Run Integration Test
+      run: dotnet test --configuration Release --filter BusinessLogicLayer_IntegrationTests
+    - name: Navigate to startup project
+      run: cd Software/E-ugostiteljstvo/E-ugostiteljstvo
+    - name: Publish application
+      run: msbuild /t:publish /p:configuration=Release /p:publishdir=Publish/
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3.1.2
+      with:
+        name: E-ugostiteljstvoSetup
+        path: Software/E-ugostiteljstvo/E-ugostiteljstvo/Publish/
+      
+      
+      
+      
+      
