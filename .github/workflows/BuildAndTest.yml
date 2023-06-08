@@ -20,7 +20,9 @@ jobs:
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v1.3.1
     - name: Navigate to root folder
-      run: cd $GITHUB_WORKSPACE/E-ugostiteljstvo/E-ugostiteljstvo
+      run: cd $GITHUB_WORKSPACE
+    - name: Navigate to E-ugostiteljstvo
+      run: cd Software/E-ugostiteljstvo/E-ugostiteljstvo
     - name: Restore NuGet Packages
       run: nuget restore 
     - name: Build solution
