@@ -23,7 +23,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.3.1
     
     - name: Navigate to Subfolder
-      run: cd Software/E-ugostiteljstvo/E-ugostiteljstvo
+      run: cd D:\a\tkipp-nparag20-mritosa20-lpejakovi20\tkipp-nparag20-mritosa20-lpejakovi20\Software\E-ugostiteljstvo\E-ugostiteljstvo
  
     - name: List files in folder
       run: pwd
