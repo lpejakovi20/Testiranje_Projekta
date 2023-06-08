@@ -21,12 +21,11 @@ jobs:
       run: pwd
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v1.3.1
-    - name: Navigate to Subfolder
-      run: cd ${{ github.workspace }}/Software/E-ugostiteljstvo/E-ugostiteljstvo
     - name: List files in folder
       run: pwd
     - name: Restore NuGet Packages
-      run: nuget restore ${{ github.workspace }}/Software/E-ugostiteljstvo/E-ugostiteljstvo/E-ugostiteljstvo.sln
+      run: nuget restore 
+      working-directory: ${{ github.workspace }}/Software/E-ugostiteljstvo/E-ugostiteljstvo
     - name: Build solution 
       run: msbuild /p:platform="Any CPU" /p:configuration=Release
     - name: Run Unit Test
