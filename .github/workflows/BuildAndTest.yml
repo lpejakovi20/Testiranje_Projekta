@@ -45,7 +45,7 @@ jobs:
       uses: actions/upload-artifact@v3.1.2
       with:
         name: E-ugostiteljstvoSetup
-        path: Software/E-ugostiteljstvo/Publish/
+        path: Software/E-ugostiteljstvo/E-ugostiteljstvo/Publish/
       
       
       
