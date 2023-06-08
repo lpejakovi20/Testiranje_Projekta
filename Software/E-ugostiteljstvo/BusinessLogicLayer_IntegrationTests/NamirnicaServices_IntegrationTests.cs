@@ -96,5 +96,41 @@ namespace BusinessLogicLayer_IntegrationTests
             //Assert
             Assert.IsType<List<StavkaNarudzbenice>>(dostupneNamirnice);
         }
+
+        [Fact]
+        public void GetNamirniceUskladistu_GivenNamirnicaIdExists_ReturnsListWithItems()
+        {
+            //Arrange
+            NamirnicaServices service = new NamirnicaServices(new NamirnicaRepository());
+            var id = 1019;
+            //Act
+            var namirnice = service.GetNamirniceUSkladistu(id);
+            //Assert
+            Assert.IsType<List<namirnica>>(namirnice);
+        }
+        [Fact]
+        public void GetNamirniceUskladistu_GivenNamirnicaIdExists_ReturnsCorrectItems()
+        {
+            //Arrange
+            NamirnicaServices service = new NamirnicaServices(new NamirnicaRepository());
+            var id = 1019;
+            //Act
+            var namirnice = service.GetNamirniceUSkladistu(id);
+            //Assert
+            Assert.True(namirnice.All(item => item.namirnica_u_katalogu_id == id));
+        }
+
+        [Fact]
+        public void GetNamirniceBlizuRoka_ReturnsListaNamirnicaBlizuRoka()
+        {
+            //Arrange
+            NamirnicaServices service = new NamirnicaServices(new NamirnicaRepository());
+            var today = DateTime.Today;
+            var date = today.AddDays(7);
+            //Act
+            var namirnice = service.GetNamirniceBlizuRoka();
+            //Assert
+            Assert.True(namirnice.All(x => x.rok >= today && x.rok <= date));
+        }
     }
 }
