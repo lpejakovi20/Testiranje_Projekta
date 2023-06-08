@@ -25,7 +25,7 @@ jobs:
       run: pwd
     - name: Restore NuGet Packages
       run: nuget restore 
-      working-directory: $GITHUB_WORKSPACE/Software/E-ugostiteljstvo
+      working-directory:  ${{ github.workspace }}/Software/E-ugostiteljstvo
     - name: Build solution 
       run: msbuild /p:platform="Any CPU" /p:configuration=Release
     - name: Run Unit Test
