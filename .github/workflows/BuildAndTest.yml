@@ -32,8 +32,10 @@ jobs:
       working-directory:  ${{ github.workspace }}/Software/E-ugostiteljstvo
     - name: Run Unit Test
       run: dotnet test --configuration Release --filter BusinessLogicLayer_UnitTests
+      working-directory:  ${{ github.workspace }}/Software/E-ugostiteljstvo
     - name: Run Integration Test
       run: dotnet test --configuration Release --filter BusinessLogicLayer_IntegrationTests
+      working-directory:  ${{ github.workspace }}/Software/E-ugostiteljstvo
     - name: Navigate to startup project
       run: cd E-ugostiteljstvo
     - name: Publish application
