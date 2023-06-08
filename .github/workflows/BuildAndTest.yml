@@ -28,6 +28,7 @@ jobs:
       working-directory:  ${{ github.workspace }}/Software/E-ugostiteljstvo
     - name: Build solution 
       run: msbuild /p:platform="Any CPU" /p:configuration=Release
+      working-directory:  ${{ github.workspace }}/Software/E-ugostiteljstvo
     - name: Run Unit Test
       run: dotnet test --configuration Release --filter BusinessLogicLayer_UnitTests
     - name: Run Integration Test
