@@ -26,7 +26,7 @@ jobs:
     - name: List files in folder
       run: pwd
     - name: Restore NuGet Packages
-      run: nuget restore Software/E-ugostiteljstvo/E-ugostiteljstvo/E-ugostiteljstvo.sln
+      run: nuget restore ${{ github.workspace }}\Software\E-ugostiteljstvo\E-ugostiteljstvo\E-ugostiteljstvo.sln
     - name: Build solution 
       run: msbuild /p:platform="Any CPU" /p:configuration=Release
     - name: Run Unit Test
