@@ -42,7 +42,9 @@ namespace BusinessLogicLayer_UnitTests
                 mjerna_jedinica = "kg",
                 rok_uporabe = 14,
                 cijena = 15,
-                zaposlenik_id = 1
+                zaposlenik_id = 1,
+                
+                
             };
 
             //Act
