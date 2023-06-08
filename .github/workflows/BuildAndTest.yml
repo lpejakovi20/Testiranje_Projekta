@@ -22,7 +22,7 @@ jobs:
     - name: Navigate to E-ugostiteljstvo
       run: cd Software/E-ugostiteljstvo
     - name: Restore NuGet Packages
-      run: nuget restore
+      run: nuget restore E-ugostiteljstvo.sln
     - name: Build solution
       run: msbuild /p:platform="Any CPU" /p:configuration=Release
     - name: Run Unit Test
