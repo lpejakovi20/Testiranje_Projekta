@@ -21,15 +21,13 @@ jobs:
       run: pwd
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v1.3.1
-    
     - name: Navigate to Subfolder
-      run: cd D:\a\tkipp-nparag20-mritosa20-lpejakovi20\tkipp-nparag20-mritosa20-lpejakovi20\Software\E-ugostiteljstvo\E-ugostiteljstvo
- 
+      run: cd ${{ github.workspace }}/Software/E-ugostiteljstvo/E-ugostiteljstvo
     - name: List files in folder
       run: pwd
     - name: Restore NuGet Packages
-      run: nuget restore 
-    - name: Build solution
+      run: nuget restore Software/E-ugostiteljstvo/E-ugostiteljstvo/E-ugostiteljstvo.sln
+    - name: Build solution 
       run: msbuild /p:platform="Any CPU" /p:configuration=Release
     - name: Run Unit Test
       run: dotnet test --configuration Release --filter BusinessLogicLayer_UnitTests
