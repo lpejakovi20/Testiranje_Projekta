@@ -54,6 +54,13 @@ namespace DataAccessLayer.Repositories
             return query;
         }
 
+        public namirnica GetNamirnicaByRokTrajanja(DateTime rok, int id)
+        {
+            var query = (from p in Entities
+                        where p.rok == rok && p.namirnica_u_katalogu_id == id
+                        select p).SingleOrDefault();
+            return query;
+        }
 
         ///<author>Lovro Pejaković</author>
         public override int Add(namirnica entity, bool saveChanges = true)
