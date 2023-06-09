@@ -151,24 +151,35 @@ namespace BusinessLogicLayer_UnitTests {
                 Assert.False(result);
             }
 
+        [Fact]
+        public void PasswordStrenght_LengthGreaterThan8_ReturnsStrong() {
+            // Arrange
+            ZaposlenikServices zaposlenikServices = new ZaposlenikServices(new FakeZaposlenikRepository());
+            var password = "strongpass";
 
+            // Act
+            var result = zaposlenikServices.PasswordStrenght(password);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            // Assert
+            Assert.True(result);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
     }
