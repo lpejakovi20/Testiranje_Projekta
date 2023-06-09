@@ -55,6 +55,10 @@ namespace BusinessLogicLayer.Services
                 return false;
             }
 
+            if (!password.Any(char.IsLower) || !password.Any(char.IsUpper)) {
+                return false;
+            }
+
             // Add more password strength checks here if needed
 
             return true;

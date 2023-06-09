@@ -166,6 +166,30 @@ namespace BusinessLogicLayer_UnitTests {
 
 
 
+        [Fact]
+        public void PasswordStrenght_ContainsLowerCaseAndUpperCase_ReturnsStrong() {
+            // Arrange
+            ZaposlenikServices zaposlenikServices = new ZaposlenikServices(new FakeZaposlenikRepository());
+            var password = "StrongPass";
+
+            // Act
+            var result = zaposlenikServices.PasswordStrenght(password);
+
+            // Assert
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void PasswordStrenght_ContainsOnlyLoweCase_ReturnsWeak() {
+            // Arrange
+            ZaposlenikServices zaposlenikServices = new ZaposlenikServices(new FakeZaposlenikRepository());
+            var password = "weakpasss";
+            // Act
+            var result = zaposlenikServices.PasswordStrenght(password);
+            // Assert
+            Assert.False(result);
+
+        }
 
 
 
@@ -182,4 +206,4 @@ namespace BusinessLogicLayer_UnitTests {
 
 
     }
-    }
+}
