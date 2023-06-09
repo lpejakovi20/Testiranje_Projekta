@@ -126,20 +126,22 @@ namespace E_ugostiteljstvo
 
                 };
                 zaposlenikServices.AddZaposlenik(_zaposlenik);
+                Close();
+                var frmLogin = new MainForm();
+                Hide();
+                frmLogin.ShowDialog();
+                Close();
             }
 
 
 
 
            
-                Close();
+               
             
             
 
-            var frmLogin = new MainForm();
-            Hide();
-            frmLogin.ShowDialog();
-            Close();
+          
           
         }
 
