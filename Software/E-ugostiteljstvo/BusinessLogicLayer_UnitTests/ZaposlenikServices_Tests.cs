@@ -190,7 +190,18 @@ namespace BusinessLogicLayer_UnitTests {
             Assert.False(result);
 
         }
+        [Fact]
+        public void Password_ContainsNumbers_ReturnsStrong() {
+            // Arrange
+            ZaposlenikServices zaposlenikServices = new ZaposlenikServices(new FakeZaposlenikRepository());
+            var password = "Strong123";
 
+            // Act
+            var result = zaposlenikServices.PasswordStrenght(password);
+
+            // Assert
+            Assert.True(result);
+        }
 
 
 

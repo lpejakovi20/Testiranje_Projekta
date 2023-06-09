@@ -55,7 +55,7 @@ namespace BusinessLogicLayer.Services
                 return false;
             }
 
-            if (!password.Any(char.IsLower) || !password.Any(char.IsUpper)) {
+            if (!password.Any(char.IsLower) || !password.Any(char.IsUpper) || !password.Any(char.IsDigit)) {
                 return false;
             }
 
