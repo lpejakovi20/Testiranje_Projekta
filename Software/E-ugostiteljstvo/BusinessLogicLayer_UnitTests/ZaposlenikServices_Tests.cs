@@ -137,25 +137,38 @@ namespace BusinessLogicLayer_UnitTests {
 
             // Assert
             Assert.False(result);
+        }
+           [Fact]
+            public void Empty_Password_ReturnsWeak() {
+                // Arrange
+                ZaposlenikServices zaposlenikServices = new ZaposlenikServices(new FakeZaposlenikRepository());
+                var password = "";
+
+                // Act
+                var result = zaposlenikServices.PasswordStrenght(password);
+
+                // Assert
+                Assert.False(result);
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         }
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
     }
-}

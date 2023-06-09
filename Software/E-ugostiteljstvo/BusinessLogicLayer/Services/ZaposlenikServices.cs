@@ -51,14 +51,13 @@ namespace BusinessLogicLayer.Services
         }
         ///<author>Matej Ritoša</author>
         public bool PasswordStrenght(string password) {
-            if (password.Length < 8) {
+            if (string.IsNullOrEmpty(password) || password.Length < 8) {
                 return false;
             }
 
-            // Add more strength criteria as per your requirements
+            // Add more password strength checks here if needed
 
             return true;
-
 
         }
 
