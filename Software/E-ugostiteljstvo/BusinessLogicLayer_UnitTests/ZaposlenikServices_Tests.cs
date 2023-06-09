@@ -124,5 +124,38 @@ namespace BusinessLogicLayer_UnitTests {
             //Assert
             Assert.Null(dohvaceniZaposelnik);
         }
+
+
+        [Fact]
+        public void PasswordStrenght_GivenPassowordIsLessThan8Characters_ReturnWeak() {
+            // Arrange
+            ZaposlenikServices zaposlenikServices = new ZaposlenikServices(new FakeZaposlenikRepository());
+            var password = "pass";
+
+            // Act
+            var result = zaposlenikServices.PasswordStrenght(password);
+
+            // Assert
+            Assert.False(result);
+
+        }
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
     }
 }
