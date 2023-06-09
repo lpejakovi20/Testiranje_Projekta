@@ -34,6 +34,7 @@
             this.btnDodaj = new System.Windows.Forms.Button();
             this.btnUkloni = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.btnImportData = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStavkeIzdatnice)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,11 +98,22 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // btnImportData
+            // 
+            this.btnImportData.Location = new System.Drawing.Point(242, 395);
+            this.btnImportData.Name = "btnImportData";
+            this.btnImportData.Size = new System.Drawing.Size(132, 48);
+            this.btnImportData.TabIndex = 6;
+            this.btnImportData.Text = "Uvezi podatke iz datoteke";
+            this.btnImportData.UseVisualStyleBackColor = true;
+            this.btnImportData.Click += new System.EventHandler(this.btnImportData_Click);
+            // 
             // FrmStavkeIzdatnice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(976, 470);
+            this.Controls.Add(this.btnImportData);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnUkloni);
             this.Controls.Add(this.btnDodaj);
@@ -130,5 +142,6 @@
         private System.Windows.Forms.Button btnDodaj;
         private System.Windows.Forms.Button btnUkloni;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnImportData;
     }
 }
