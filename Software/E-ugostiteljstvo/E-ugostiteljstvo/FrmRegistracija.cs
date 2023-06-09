@@ -95,6 +95,8 @@ namespace E_ugostiteljstvo
 
         private void btnRegistriraj_Click(object sender, EventArgs e)
         {
+
+            var zaposlenikServices = new ZaposlenikServices(new ZaposlenikRepository());
             MemoryStream memoryStream = new MemoryStream();
             if (faceImage != null)
             {
@@ -104,28 +106,35 @@ namespace E_ugostiteljstvo
             
             byte[] imageBytes = memoryStream.ToArray();
 
-            var _zaposlenik = new zaposlenik
-            {
-                ime = txtIme.Text,
-                prezime = txtPrezime.Text,
-                email = txtEmail.Text,
-                lozinka = txtLozinka.Text,
-                uloga = cmbRadnoMjesto.SelectedItem as uloga,
-                slika = imageBytes,
+            var provjeraLozinke = zaposlenikServices.PasswordStrenght(txtLozinka.Text);
+            if(!provjeraLozinke) {
+                MessageBox.Show("Lozinka mora sadržavati minimalno 8 znakova, jedno veliko slovo, jedno malo slovo i jedan broj!");
                 
-                
-            };
+            } 
+            else if(!validacijaMail(txtEmail.Text)){
+                MessageBox.Show("E-mail format nije ispravan!");
+            }
+            else {
+                var _zaposlenik = new zaposlenik {
+                    ime = txtIme.Text,
+                    prezime = txtPrezime.Text,
+                    email = txtEmail.Text,
+                    lozinka = txtLozinka.Text,
+                    uloga = cmbRadnoMjesto.SelectedItem as uloga,
+                    slika = imageBytes,
 
-            if (validacijaMail(txtEmail.Text) && txtLozinka.Text.Length >= 6)
-            {
-                var zaposlenikServices = new ZaposlenikServices(new ZaposlenikRepository());
+
+                };
                 zaposlenikServices.AddZaposlenik(_zaposlenik);
+            }
+
+
+
+
+           
                 Close();
-            }
-            else
-            {
-                MessageBox.Show("Krivo upisani podaci.");
-            }
+            
+            
 
             var frmLogin = new MainForm();
             Hide();
