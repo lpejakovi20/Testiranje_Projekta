@@ -44,9 +44,6 @@ namespace E_ugostiteljstvo
                 Directory.CreateDirectory(baseDirectory);
             }
 
-            if (!Directory.Exists(modelsDirectory)) {
-                Directory.CreateDirectory(modelsDirectory);
-            }
         }
 
 
@@ -211,8 +208,6 @@ namespace E_ugostiteljstvo
                     string department = File.ReadAllText(pathTxt);
 
                     if (bitmapCompare != null) {
-
-
                         foreach (var encodingToCompare in encodingsToCompare) {
                             var compare = FaceRecognition.CompareFace(knownEncoding, encodingToCompare);
                             if (compare) {
@@ -227,7 +222,7 @@ namespace E_ugostiteljstvo
                         }
                     }
                 }
-                if (checkFace == true) {
+                if (checkFace) {
                     break;
                 }
             }

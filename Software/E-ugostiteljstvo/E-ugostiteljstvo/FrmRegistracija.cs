@@ -42,8 +42,8 @@ namespace E_ugostiteljstvo
             pcbSlika2.Image = pcbSlika.Image;
             Bitmap bitmap = new Bitmap(pcbSlika2.Width, pcbSlika2.Height);
             pcbSlika2.DrawToBitmap(bitmap, pcbSlika2.ClientRectangle);
-            System.Drawing.Imaging.ImageFormat imageFormat = null;
-            imageFormat = System.Drawing.Imaging.ImageFormat.Jpeg;
+            //System.Drawing.Imaging.ImageFormat imageFormat = null;
+            //imageFormat = System.Drawing.Imaging.ImageFormat.Jpeg;
 
             using (var stream = new MemoryStream()) {
                 bitmap.Save(stream, ImageFormat.Jpeg);
@@ -117,9 +117,12 @@ namespace E_ugostiteljstvo
             }
         }
 
-        private void FrmRegistracija_Load(object sender, EventArgs e)
-        {
+        private void FrmRegistracija_Load(object sender, EventArgs e) {
             UcitajUloge();
+            PostavljanjeIzboraKamere();
+        }
+
+        private void PostavljanjeIzboraKamere() {
             filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             foreach (FilterInfo filterInfo in filterInfoCollection) {
                 cboDevices.Items.Add(filterInfo.Name);
