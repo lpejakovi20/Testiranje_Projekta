@@ -42,8 +42,6 @@ namespace E_ugostiteljstvo
             pcbSlika2.Image = pcbSlika.Image;
             Bitmap bitmap = new Bitmap(pcbSlika2.Width, pcbSlika2.Height);
             pcbSlika2.DrawToBitmap(bitmap, pcbSlika2.ClientRectangle);
-            //System.Drawing.Imaging.ImageFormat imageFormat = null;
-            //imageFormat = System.Drawing.Imaging.ImageFormat.Jpeg;
 
             using (var stream = new MemoryStream()) {
                 bitmap.Save(stream, ImageFormat.Jpeg);
