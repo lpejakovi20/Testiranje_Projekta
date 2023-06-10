@@ -27,7 +27,9 @@ namespace E_ugostiteljstvo
         FilterInfoCollection filterInfoCollection;
         VideoCaptureDevice captureDevice;
         private const string BaseDirectoryName = "source\\repos\\tkipp-nparag20-mritosa20-lpejakovi20\\Software\\E-ugostiteljstvo\\FaceRec";
+        private const string ModelsDirectoryName = "source\\repos\\tkipp-nparag20-mritosa20-lpejakovi20\\Software\\E-ugostiteljstvo\\E-ugostiteljstvo\\bin\\Debug\\models";
         private string baseDirectory;
+        private string modelsDirectory;
         int departmentCheck;
 
         public MainForm()
@@ -35,10 +37,15 @@ namespace E_ugostiteljstvo
             InitializeComponent();
             txtLozinka.PasswordChar = '*';
             baseDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), BaseDirectoryName);
+            modelsDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ModelsDirectoryName);
             this.HelpRequested += MainForm_HelpRequested;
 
             if (!Directory.Exists(baseDirectory)) {
                 Directory.CreateDirectory(baseDirectory);
+            }
+
+            if (!Directory.Exists(modelsDirectory)) {
+                Directory.CreateDirectory(modelsDirectory);
             }
         }
 
@@ -111,7 +118,7 @@ namespace E_ugostiteljstvo
         }
 
         private void btnScan_Click(object sender, EventArgs e) {
-            string models = "C:/Users/38599/source/repos/rpp22-mritosa20-nparag20-lpejakovi20/Software/E-ugostiteljstvo/E-ugostiteljstvo/bin/Debug/models";
+            string models = modelsDirectory;
             FaceRecognition faceRecognition;
             faceRecognition = FaceRecognition.Create(models);
 
