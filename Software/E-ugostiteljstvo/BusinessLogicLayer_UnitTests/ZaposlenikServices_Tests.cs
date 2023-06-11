@@ -124,5 +124,148 @@ namespace BusinessLogicLayer_UnitTests {
             //Assert
             Assert.Null(dohvaceniZaposelnik);
         }
+
+
+        [Fact]
+        public void PasswordStrenght_GivenPassowordIsLessThan8Characters_ReturnWeak() {
+            // Arrange
+            ZaposlenikServices zaposlenikServices = new ZaposlenikServices(new FakeZaposlenikRepository());
+            var password = "pass";
+
+            // Act
+            var result = zaposlenikServices.PasswordStrenght(password);
+
+            // Assert
+            Assert.False(result);
+        }
+           [Fact]
+            public void Empty_Password_ReturnsWeak() {
+                // Arrange
+                ZaposlenikServices zaposlenikServices = new ZaposlenikServices(new FakeZaposlenikRepository());
+                var password = "";
+
+                // Act
+                var result = zaposlenikServices.PasswordStrenght(password);
+
+                // Assert
+                Assert.False(result);
+            }
+
+        [Fact]
+        public void PasswordStrenght_LengthGreaterThan8_ReturnsWeak() {
+            // Arrange
+            ZaposlenikServices zaposlenikServices = new ZaposlenikServices(new FakeZaposlenikRepository());
+            var password = "strongpass";
+
+            // Act
+            var result = zaposlenikServices.PasswordStrenght(password);
+
+            // Assert
+            Assert.False(result);
+        }
+
+
+
+  
+
+        [Fact]
+        public void PasswordStrenght_ContainsOnlyLoweCase_ReturnsWeak() {
+            // Arrange
+            ZaposlenikServices zaposlenikServices = new ZaposlenikServices(new FakeZaposlenikRepository());
+            var password = "weakpasss";
+            // Act
+            var result = zaposlenikServices.PasswordStrenght(password);
+            // Assert
+            Assert.False(result);
+
+        }
+        [Fact]
+        public void Password_ContainsOnlyNumbers_ReturnsStrong() {
+            // Arrange
+            ZaposlenikServices zaposlenikServices = new ZaposlenikServices(new FakeZaposlenikRepository());
+            var password = "12355234235";
+
+            // Act
+            var result = zaposlenikServices.PasswordStrenght(password);
+
+            // Assert
+            Assert.False(result);
+        }
+        [Fact]
+        public void Password_ContainsOnlySpecialCharacters_ReturnsStrong() {
+            // Arrange
+            ZaposlenikServices zaposlenikServices = new ZaposlenikServices(new FakeZaposlenikRepository());
+            var password = "#$#&!$%#$%&/";
+
+            // Act
+            var result = zaposlenikServices.PasswordStrenght(password);
+
+            // Assert
+            Assert.False(result);
+        }
+
+
+
+        [Fact]
+        public void PasswordStrenght_ContainsLowerCaseAndUpperCase_ReturnsWeak() {
+            // Arrange
+            ZaposlenikServices zaposlenikServices = new ZaposlenikServices(new FakeZaposlenikRepository());
+            var password = "StrongPass";
+
+            // Act
+            var result = zaposlenikServices.PasswordStrenght(password);
+
+            // Assert
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void PasswordStrenght_ContainsLowerCaseAndNumbers_ReturnsWeak() {
+            // Arrange
+            ZaposlenikServices zaposlenikServices = new ZaposlenikServices(new FakeZaposlenikRepository());
+            var password = "strong1234";
+
+            // Act
+            var result = zaposlenikServices.PasswordStrenght(password);
+
+            // Assert
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void PasswordStrenght_ContainsUpperCaseAndNumbers_ReturnsStrong() {
+            // Arrange
+            ZaposlenikServices zaposlenikServices = new ZaposlenikServices(new FakeZaposlenikRepository());
+            var password = "STRONG1234";
+
+            // Act
+            var result = zaposlenikServices.PasswordStrenght(password);
+
+            // Assert
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void PasswordStrenght_ContainsUpperCaseLowerCaseSpecialCharactersAndNumbers_ReturnsStrong() {
+            // Arrange
+            ZaposlenikServices zaposlenikServices = new ZaposlenikServices(new FakeZaposlenikRepository());
+            var password = "STRONG1234";
+
+            // Act
+            var result = zaposlenikServices.PasswordStrenght(password);
+
+            // Assert
+            Assert.False(result);
+        }
+
+
+
+
+
+
+
+
+
+
     }
 }

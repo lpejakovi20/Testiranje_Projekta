@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -68,36 +68,36 @@ namespace E_ugostiteljstvo
 
         private void btnRegistriraj_Click(object sender, EventArgs e)
         {
-         
 
-            var _zaposlenik = new zaposlenik
-            {
-                ime = txtIme.Text,
-                prezime = txtPrezime.Text,
-                email = txtEmail.Text,
-                lozinka = txtLozinka.Text,
-                uloga = cmbRadnoMjesto.SelectedItem as uloga,
-                slika = imageBytes,
-                
-                
-            };
+            var zaposlenikServices = new ZaposlenikServices(new ZaposlenikRepository());
 
-            if (validacijaMail(txtEmail.Text) && txtLozinka.Text.Length >= 6)
-            {
-                var zaposlenikServices = new ZaposlenikServices(new ZaposlenikRepository());
+            var provjeraLozinke = zaposlenikServices.PasswordStrenght(txtLozinka.Text);
+            if(!provjeraLozinke) {
+                MessageBox.Show("Lozinka mora sadržavati minimalno 8 znakova, jedno veliko slovo, jedno malo slovo i jedan broj!");
+                
+            } 
+            else if(!validacijaMail(txtEmail.Text)){
+                MessageBox.Show("E-mail format nije ispravan!");
+            }
+            else {
+                var _zaposlenik = new zaposlenik {
+                    ime = txtIme.Text,
+                    prezime = txtPrezime.Text,
+                    email = txtEmail.Text,
+                    lozinka = txtLozinka.Text,
+                    uloga = cmbRadnoMjesto.SelectedItem as uloga,
+                    slika = imageBytes,
+
+
+                };
                 zaposlenikServices.AddZaposlenik(_zaposlenik);
                 Close();
+                var frmLogin = new MainForm();
+                Hide();
+                frmLogin.ShowDialog();
+                Close();
             }
-            else
-            {
-                MessageBox.Show("Krivo upisani podaci.");
-            }
-
-            var frmLogin = new MainForm();
-            Hide();
-            frmLogin.ShowDialog();
-            Close();
-          
+ 
         }
 
         private bool validacijaMail(string email)
