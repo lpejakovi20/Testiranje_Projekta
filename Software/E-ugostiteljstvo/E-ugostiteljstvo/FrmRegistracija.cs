@@ -15,19 +15,19 @@ using BusinessLogicLayer.Services;
 using EntitiesLayer.Entities;
 using System.IO;
 using DataAccessLayer.Repositories;
+using AForge.Video.DirectShow;
+using AForge.Video;
+using System.Drawing.Imaging;
 
 namespace E_ugostiteljstvo
 {
     ///<author>Matej Ritoša</author>
     public partial class FrmRegistracija : Form
     {
-        private Capture snimkaLica = null;
-        private Image<Bgr, Byte> currentFrame = null;
-        Mat frame = new Mat();
-        private bool detektiranoLice = false;
-        CascadeClassifier faceCascadeClassifier = new CascadeClassifier("haarcascade_frontalface_alt.xml");
-        Rectangle[] lica;
-        private Image<Bgr, byte> faceImage = null;
+        byte[] imageBytes;
+
+        FilterInfoCollection filterInfoCollection;
+        VideoCaptureDevice captureDevice;
 
         public FrmRegistracija()
         {
@@ -38,71 +38,37 @@ namespace E_ugostiteljstvo
 
         private void btnSlikaj_Click(object sender, EventArgs e)
         {
-            if (detektiranoLice)
-            {
-                
-                Rectangle lice = lica[0];
+            pcbSlika2.Image = pcbSlika.Image;
+            Bitmap bitmap = new Bitmap(pcbSlika2.Width, pcbSlika2.Height);
+            pcbSlika2.DrawToBitmap(bitmap, pcbSlika2.ClientRectangle);
 
-
-                faceImage = currentFrame.GetSubRect(lice);
-
-
-                snimkaLica.Stop();
-                detektiranoLice = false;
-
-                MessageBox.Show("Face captured and saved successfully.");
+            using (var stream = new MemoryStream()) {
+                bitmap.Save(stream, ImageFormat.Jpeg);
+                imageBytes = stream.ToArray();
             }
-            else
-            {
-                MessageBox.Show("No face detected. Please try again.");
-            }
+            pcbSlika2.Image = bitmap;
         }
 
-        private void ProcessFrame(object sender, EventArgs e)
-        {
-            snimkaLica.Retrieve(frame, 0);
-            currentFrame = frame.ToImage<Bgr, Byte>().Resize(pcbSlika.Width, pcbSlika.Height, Inter.Cubic);
-            detektiranoLice = true;
-            if (true)
-             {
-                 Mat grayImage = new Mat();
-                 CvInvoke.CvtColor(currentFrame, grayImage, ColorConversion.Bgr2Gray);
-
-
-                 lica = faceCascadeClassifier.DetectMultiScale(grayImage, 1.1, 3, Size.Empty, Size.Empty);
-
-
-                if (lica.Length>0)
-                {
-                    foreach (var lice in lica)
-                    {
-                        CvInvoke.Rectangle(currentFrame, lice, new Bgr(Color.Red).MCvScalar, 2);
-                    }
-                }
-                
-            }
-            
-            
-            pcbSlika.Image = currentFrame.Bitmap;
-        }
 
         private void btnUkljuci_Click(object sender, EventArgs e)
         {
-            snimkaLica = new Capture();
-            snimkaLica.ImageGrabbed += ProcessFrame;
-            snimkaLica.Start();
+            startCamera();
+        }
+
+        private void startCamera() {
+            captureDevice = new VideoCaptureDevice(filterInfoCollection[cboDevices.SelectedIndex].MonikerString);
+            captureDevice.NewFrame += Camera_On;
+            captureDevice.Start();
+
+        }
+
+        private void Camera_On(object sender, NewFrameEventArgs eventArgs) {
+            pcbSlika.Image = (Bitmap)eventArgs.Frame.Clone();
         }
 
         private void btnRegistriraj_Click(object sender, EventArgs e)
         {
-            MemoryStream memoryStream = new MemoryStream();
-            if (faceImage != null)
-            {
-                faceImage.Bitmap.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-            }
-            
-            
-            byte[] imageBytes = memoryStream.ToArray();
+         
 
             var _zaposlenik = new zaposlenik
             {
@@ -147,9 +113,17 @@ namespace E_ugostiteljstvo
             }
         }
 
-        private void FrmRegistracija_Load(object sender, EventArgs e)
-        {
+        private void FrmRegistracija_Load(object sender, EventArgs e) {
             UcitajUloge();
+            PostavljanjeIzboraKamere();
+        }
+
+        private void PostavljanjeIzboraKamere() {
+            filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            foreach (FilterInfo filterInfo in filterInfoCollection) {
+                cboDevices.Items.Add(filterInfo.Name);
+            }
+            cboDevices.SelectedIndex = 0;
         }
 
         private void UcitajUloge()
