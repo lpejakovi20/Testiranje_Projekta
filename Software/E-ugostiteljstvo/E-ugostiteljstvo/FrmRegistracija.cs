@@ -49,7 +49,6 @@ namespace E_ugostiteljstvo
             pcbSlika2.Image = bitmap;
         }
 
-       
 
         private void btnUkljuci_Click(object sender, EventArgs e)
         {
