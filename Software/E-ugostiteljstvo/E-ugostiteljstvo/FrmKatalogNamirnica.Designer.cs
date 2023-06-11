@@ -43,6 +43,7 @@
             this.btnObrisiPrikaz = new System.Windows.Forms.Button();
             this.btnCreateIzdatnica = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnIzbrisi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKatalogNamirnica)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNamirniceUSkladistu)).BeginInit();
             this.SuspendLayout();
@@ -136,7 +137,7 @@
             // 
             // btnAddNewNamirnica
             // 
-            this.btnAddNewNamirnica.Location = new System.Drawing.Point(1059, 382);
+            this.btnAddNewNamirnica.Location = new System.Drawing.Point(923, 394);
             this.btnAddNewNamirnica.Name = "btnAddNewNamirnica";
             this.btnAddNewNamirnica.Size = new System.Drawing.Size(130, 44);
             this.btnAddNewNamirnica.TabIndex = 8;
@@ -212,11 +213,22 @@
             this.label3.TabIndex = 16;
             this.label3.Text = "Namirnice u skladištu:";
             // 
+            // btnIzbrisi
+            // 
+            this.btnIzbrisi.Location = new System.Drawing.Point(1059, 394);
+            this.btnIzbrisi.Name = "btnIzbrisi";
+            this.btnIzbrisi.Size = new System.Drawing.Size(130, 44);
+            this.btnIzbrisi.TabIndex = 17;
+            this.btnIzbrisi.Text = "Izbriši namirnicu";
+            this.btnIzbrisi.UseVisualStyleBackColor = true;
+            this.btnIzbrisi.Click += new System.EventHandler(this.btnIzbrisi_Click);
+            // 
             // FrmKatalogNamirnica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1224, 741);
+            this.Controls.Add(this.btnIzbrisi);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCreateIzdatnica);
             this.Controls.Add(this.btnObrisiPrikaz);
@@ -263,5 +275,6 @@
         private System.Windows.Forms.Button btnObrisiPrikaz;
         private System.Windows.Forms.Button btnCreateIzdatnica;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnIzbrisi;
     }
 }

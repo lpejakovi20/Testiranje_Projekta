@@ -152,9 +152,35 @@ namespace E_ugostiteljstvo
             }
         }
 
+        private void btnIzbrisi_Click(object sender, EventArgs e)
+        {
+            int selectedRowIndex = dgvKatalogNamirnica.CurrentRow.Index;
+            if (selectedRowIndex >= 0)
+            {
+                var selectedNamirnica = dgvKatalogNamirnica.CurrentRow.DataBoundItem as namirnica_u_katalogu;
+                var namirniceSkladiste = servicesNamirnica.GetNamirniceUSkladistu(selectedNamirnica.id);
+                if (selectedNamirnica != null) { 
+                    if(namirniceSkladiste.Count == 0) { 
+                        var IsDeleted = services.DeleteNamirnica(selectedNamirnica);
+                        if (IsDeleted)
+                        {
+                            MessageBox.Show("Izbrisana namirnica!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("INamirnica nije izbrisana! Ima postojeće namirnice u skladištu!");
+                    }
+                }
+                ShowKatalogNamirnica();
+            }
+        }
+
         private void FrmKatalogNamirnica_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
             Help.ShowHelp(this, "..\\..\\HelpCHM\\Help.chm", HelpNavigator.KeywordIndex, "KatalogNamirnica");
         }
+
+
     }
 }

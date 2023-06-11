@@ -19,6 +19,15 @@ namespace BusinessLogicLayer_UnitTests.FakeRepository
             else return 0;
         }
 
+        public int Delete(namirnica_u_katalogu entity, bool saveChanges = true)
+        {
+            if (entity != null)
+            {
+                return 1;
+            }
+            else return 0; ;
+        }
+
         public IQueryable<namirnica_u_katalogu> GetAll()
         {
             List<namirnica_u_katalogu> lista = new List<namirnica_u_katalogu>()

@@ -28,6 +28,16 @@ namespace BusinessLogicLayer.Services
             }
             return isSuccessful;
         }
+        public bool DeleteNamirnica(namirnica_u_katalogu namirnica)
+        {
+            bool isSuccessful = false;
+            using (var r = new KatalogNamirnicaRepository())
+            {
+                int affectedRows = repo.Delete(namirnica);
+                isSuccessful = affectedRows > 0;
+            }
+            return isSuccessful;
+        }
         ///<author>Nikola Parag</author>
         public List<namirnica_u_katalogu> GetKatalogNamirnica()
         {
