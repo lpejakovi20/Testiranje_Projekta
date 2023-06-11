@@ -204,6 +204,10 @@ PublishScripts/
 *.nuget.props
 *.nuget.targets
 
+# Specific folders within the packages folder to exclude
+/packages/FaceRecognitionDotNet.1.3.0.7/runtimes/win-AnyCPU
+/packages/DlibDotNet.19.21.0.20220724/runtimes/win-AnyCPU
+
 # Microsoft Azure Build Output
 csx/
 *.build.csdef
