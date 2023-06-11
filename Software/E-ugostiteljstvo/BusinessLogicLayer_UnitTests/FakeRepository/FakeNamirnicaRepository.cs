@@ -133,5 +133,10 @@ namespace BusinessLogicLayer_UnitTests.FakeRepository
             }
             else return 0;
         }
+
+        public namirnica GetNamirnicaByRokTrajanja(DateTime rok, int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

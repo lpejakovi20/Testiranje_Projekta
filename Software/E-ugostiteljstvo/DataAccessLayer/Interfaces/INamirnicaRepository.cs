@@ -12,6 +12,7 @@ namespace DataAccessLayer.Interfaces
     {
         int Update(namirnica entity, bool saveChanges = true);
         IQueryable<namirnica> GetNamirniceById(int id);
+        namirnica GetNamirnicaByRokTrajanja(DateTime rok, int id);
         IQueryable<namirnica> GetNamirniceByKatalogId(int namirnica_id);
         int Add(namirnica entity, bool saveChanges = true);
         IQueryable<StavkaIzvjestajaBlizuRoka> GetNamirniceBlizuRoka();

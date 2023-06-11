@@ -26,6 +26,15 @@ namespace BusinessLogicLayer.Services
             }
         }
         ///<author>Lovro Pejaković</author>
+        public namirnica GetNamirnicaByRokTrajanja(DateTime rok, int id)
+        {
+            using (var r = new NamirnicaRepository())
+            {
+                return repo.GetNamirnicaByRokTrajanja(rok, id);
+            }
+        }
+
+        ///<author>Lovro Pejaković</author>
         public List<dynamic> GetNamirniceIstecenogRoka()
         {
             using (var r = new NamirnicaRepository())

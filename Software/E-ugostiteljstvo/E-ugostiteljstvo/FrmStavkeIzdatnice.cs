@@ -74,7 +74,11 @@ namespace E_ugostiteljstvo
                     };
 
                     var servis = new NamirnicaServices(new NamirnicaRepository());
-                    servis.UpdateNamirnica(novaNamirnica);
+
+                    var test1 = "" + novaNamirnica.rok + "," + novaNamirnica.kolicina + "\n";
+                    Console.Write(test1);
+                    var test2 = servis.UpdateNamirnica(novaNamirnica);
+                    Console.Write(test2);
 
                     var servisIskoristenostNamirnica = new IskoristenostNamirnicaServices(new IskoristenostNamirnicaRepository());
                     var mjesec = DateTime.Today.Month;
@@ -128,6 +132,47 @@ namespace E_ugostiteljstvo
         private void FrmStavkeIzdatnice_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
             Help.ShowHelp(this, "..\\..\\HelpCHM\\Help.chm", HelpNavigator.KeywordIndex, "StavkeIzdatnice");
+        }
+
+        private void btnImportData_Click(object sender, EventArgs e)
+        {
+            string filePath = OdaberiExcelDatoteku();
+
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                // Parsiranje Excel datoteke
+                ImportStavkeIzdatniceServices service = new ImportStavkeIzdatniceServices();
+
+                List<string[]> podaci = service.ParsirajExcelDatoteku(filePath);
+
+                if(podaci == null)
+                {
+                    MessageBox.Show("Odabrana datoteka nije u pravom formatu ili postoje određene greške u individualnim ćelijama!");
+                }
+                else
+                {
+                    var stavke = service.CreateStavkeIzdatnice(podaci);
+
+                    stavke = service.KeepOnlyValidOnes(stavke);
+
+                    StavkaIzdatniceRepository.lista.AddRange(stavke);
+
+                    OsvjeziStavkeIzdatnice();
+                }
+            }
+        }
+
+        static string OdaberiExcelDatoteku()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Excel datoteke (*.xlsx)|*.xlsx";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                return openFileDialog.FileName;
+            }
+
+            return null;
         }
     }
 }
