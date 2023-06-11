@@ -11,37 +11,38 @@ jobs:
     runs-on: windows-latest
     
     steps:
-    
-    
+
     - name: Checkout
       uses: actions/checkout@v3.5.2
     - name: Setup Nuget
       uses: NuGet/setup-nuget@v1.2.0 
-    - name: List files in folder
-      run: pwd
-    - name: setup-msbuild
+    - name: Setup MSbuild
       uses: microsoft/setup-msbuild@v1.3.1
-    - name: List files in folder
-      run: pwd
     - name: Restore NuGet Packages
       run: nuget restore 
+      working-directory:  ${{ github.workspace }}/Software/E-ugostiteljstvo
+    - name: Restore DotNet 
+      run: dotnet restore 
       working-directory:  ${{ github.workspace }}/Software/E-ugostiteljstvo
     - name: Build solution 
       run: msbuild /p:platform="Any CPU" /p:configuration=Release
       working-directory:  ${{ github.workspace }}/Software/E-ugostiteljstvo
     - name: Run Unit Test
       run: dotnet test --configuration Release --filter BusinessLogicLayer_UnitTests
+      working-directory:  ${{ github.workspace }}/Software/E-ugostiteljstvo
     - name: Run Integration Test
       run: dotnet test --configuration Release --filter BusinessLogicLayer_IntegrationTests
+      working-directory:  ${{ github.workspace }}/Software/E-ugostiteljstvo
     - name: Navigate to startup project
-      run: cd E-ugostiteljstvo
+      run: cd Software/E-ugostiteljstvo/E-ugostiteljstvo
     - name: Publish application
       run: msbuild /t:publish /p:configuration=Release /p:publishdir=Publish/
+      working-directory:  ${{ github.workspace }}/Software/E-ugostiteljstvo
     - name: Upload artifact
       uses: actions/upload-artifact@v3.1.2
       with:
         name: E-ugostiteljstvoSetup
-        path: E-ugostiteljstvo/Publish/
+        path: Software/E-ugostiteljstvo/E-ugostiteljstvo/Publish/
       
       
       
