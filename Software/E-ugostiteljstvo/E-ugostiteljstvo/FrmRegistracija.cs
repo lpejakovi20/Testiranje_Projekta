@@ -29,7 +29,6 @@ namespace E_ugostiteljstvo
         FilterInfoCollection filterInfoCollection;
         VideoCaptureDevice captureDevice;
 
-
         public FrmRegistracija()
         {
             InitializeComponent();
