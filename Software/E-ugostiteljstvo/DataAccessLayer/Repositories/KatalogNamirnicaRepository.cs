@@ -43,6 +43,20 @@ namespace DataAccessLayer.Repositories
 
         }
 
+        public int Delete(namirnica_u_katalogu entity, bool saveChanges = true)
+        {
+            Entities.Attach(entity);
+            Entities.Remove(entity);
+            if (saveChanges)
+            {
+                return SaveChanges();
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
         public IQueryable<namirnica_u_katalogu> GetAll()
         {
             var query = from p in Entities.Include("zaposlenik")
@@ -76,5 +90,7 @@ namespace DataAccessLayer.Repositories
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

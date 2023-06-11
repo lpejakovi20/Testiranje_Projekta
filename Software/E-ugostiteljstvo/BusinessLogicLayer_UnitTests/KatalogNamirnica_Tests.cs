@@ -198,5 +198,42 @@ namespace BusinessLogicLayer_UnitTests
             //Assert
             Assert.True(namirnice.SequenceEqual(sortirane));
         }
+        [Fact]
+        public static void DeleteFromKatalog_GivenNovaNamirnicaIsNull_NamirnicaIsNotDeleted()
+        {
+            //Arange
+            KatalogNamirnicaServices katalogServices = new KatalogNamirnicaServices(new FakeKatalogNamirnicaRepository());
+            namirnica_u_katalogu namirnica = null;
+
+            //Act
+            var uspjeh = katalogServices.DeleteNamirnica(namirnica);
+            //Assert
+            Assert.False(uspjeh);
+        }
+        [Fact]
+        public static void DeleteFromKatalog_GivenNovaNamirnicaIsNotNull_NamirnicaIsDeleted()
+        {
+            //Arange
+            KatalogNamirnicaServices katalogServices = new KatalogNamirnicaServices(new FakeKatalogNamirnicaRepository());
+            var namirnica = new namirnica_u_katalogu
+            {
+                id = 23,
+                naziv = "Brašno",
+                vrsta = "Meso",
+                minimalne_zalihe = 12,
+                optimalne_zalihe = 25,
+                mjerna_jedinica = "kg",
+                rok_uporabe = 14,
+                cijena = 15,
+                zaposlenik_id = 1,
+
+
+            };
+
+            //Act
+            var uspjeh = katalogServices.DeleteNamirnica(namirnica);
+            //Assert
+            Assert.True(uspjeh);
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
+using System.Xml.Linq;
 using Xunit;
 
 namespace BusinessLogicLayer_IntegrationTests {
@@ -165,6 +166,62 @@ namespace BusinessLogicLayer_IntegrationTests {
             var sortirane = namirnice.OrderByDescending(o => o.cijena);
             //Assert
             Assert.True(namirnice.SequenceEqual(sortirane));
+        }
+
+        [Fact]
+        public void DeleteFromKatalog_GivenSelectedNamirnicaIsNotNull_SelectedNamirnicaUKataloguIsDeleted()
+        {
+            //Arrange
+            using (var transaction = new TransactionScope())
+            {
+
+                var namirnicaDelete = new namirnica_u_katalogu()
+                {
+                    id = 101958092,
+                    naziv = "nista",
+                    vrsta = "Riba",
+                    minimalne_zalihe = 12,
+                    optimalne_zalihe = 12,
+                    mjerna_jedinica = "kom",
+                    rok_uporabe = 12,
+                    cijena = 12,
+                    zaposlenik_id = 7,
+
+                };
+                KatalogNamirnicaServices katalogServices = new KatalogNamirnicaServices(new KatalogNamirnicaRepository());
+                //Act
+                var uspjeh = katalogServices.DeleteNamirnica(namirnicaDelete);
+                //Assert
+                Assert.True(uspjeh);
+            }
+        }
+        [Fact]
+        public void DeleteFromKatalog_GivenSelectedNamirnicaIsNotNull_IspravnaNamirnicaUKataloguIsDeleted()
+        {
+            //Arrange
+            using (var transaction = new TransactionScope())
+            {
+
+                var namirnicaDelete = new namirnica_u_katalogu()
+                {
+                    id = 101958092,
+                    naziv = "nista",
+                    vrsta = "Riba",
+                    minimalne_zalihe = 12,
+                    optimalne_zalihe = 12,
+                    mjerna_jedinica = "kom",
+                    rok_uporabe = 12,
+                    cijena = 12,
+                    zaposlenik_id = 7,
+
+                };
+                KatalogNamirnicaServices katalogServices = new KatalogNamirnicaServices(new KatalogNamirnicaRepository());
+                var lista = katalogServices.GetKatalogNamirnica();
+                //Act
+                var uspjeh = katalogServices.DeleteNamirnica(namirnicaDelete);
+                //Assert
+                Assert.False(lista.All(obj => obj.naziv.Contains(namirnicaDelete.naziv)));
+            }
         }
 
     }

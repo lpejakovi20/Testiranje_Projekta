@@ -10,6 +10,7 @@ namespace DataAccessLayer.Interfaces
     public interface IKatalogNamirnicaRepository
     {
         int Add(namirnica_u_katalogu entity, bool saveChanges = true);
+        int Delete(namirnica_u_katalogu entity, bool saveChanges = true);
         IQueryable<namirnica_u_katalogu> GetAll();
         IQueryable<namirnica_u_katalogu> GetKatalogNamirnicaByName(string phrase);
         namirnica_u_katalogu GetKatalogNamirnicaById(int id);
